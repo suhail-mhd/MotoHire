@@ -53,7 +53,7 @@ This is an example of how you may give instructions on setting up your project l
 Clone the project
 
 ```bash
-  git clone https://github.com/suhail-mhd/Gauto.git
+  git clone https://github.com/suhail-mhd/MotoHire.git
 ```
 
 Install dependencies
