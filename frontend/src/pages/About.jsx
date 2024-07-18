@@ -5,7 +5,7 @@ import Helmet from "../components/Helmet/Helmet";
 import AboutSection from "../components/UI/AboutSection";
 import { Container, Row, Col } from "reactstrap";
 
-import driveImg from "../assets/all-images/drive.jpg";
+import driveImg from "../assets/all-images/blog-img/about1.jpg";
 import OurMembers from "../components/UI/OurMembers";
 import "../styles/about.css";
 
@@ -26,34 +26,19 @@ const About = () => {
 
             <Col lg="6" md="6" sm="12">
               <div className="about__page-content">
-                <h2 className="section__title">
-                  We Are Committed To Provide Safe Ride Solutions
-                </h2>
+              <h4 className="section__subtitle">Who</h4>
+              <h2 className="section__title" style={{fontWeight:'bold'}}>We Are</h2>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                MotoHire was founded with a vision to simplify the car rental process and offer a wide range of vehicles that cater to every budget and preference. Our team of dedicated professionals works tirelessly to ensure that every customer has a smooth and enjoyable rental experience. We take pride in our extensive fleet of well-maintained vehicles, exceptional customer service, and competitive pricing.
                 </p>
+
+                <h4 className="section__subtitle">Our</h4>
+                <h2 className="section__title" style={{fontWeight:'bold'}}>Mission</h2>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                Our mission is to make car rental easy, accessible, and affordable for everyone. We strive to provide top-quality vehicles and excellent customer service to ensure that every journey with MotoHire is comfortable and hassle-free. We are committed to continuous improvement and innovation, always looking for ways to enhance our services and exceed customer expectations.
                 </p>
-
-                <div className=" d-flex align-items-center gap-3 mt-4">
-                  <span className="fs-4">
-                    <i class="ri-phone-line"></i>
-                  </span>
-
-                  <div>
-                    <h6 className="section__subtitle">Need Any Help?</h6>
-                    <h4>+00123456789</h4>
-                  </div>
-                </div>
               </div>
             </Col>
           </Row>
@@ -61,12 +46,12 @@ const About = () => {
       </section>
 
 
-      <section>
+      <section style={{marginTop:"5rem"}}>
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Experts</h6>
-              <h2 className="section__title">Our Members</h2>
+              <h6 className="section__subtitle">Why</h6>
+              <h2 className="section__title">MotoHire?</h2>
             </Col>
             <OurMembers />
           </Row>

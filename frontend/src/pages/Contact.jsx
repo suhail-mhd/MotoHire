@@ -55,9 +55,10 @@ const Contact = () => {
             <Col lg="5" md="5">
               <div className="contact__info">
                 <h6 className="fw-bold">Contact Information</h6>
-                <p className="section__description mb-0">
-                  Ernakulam, Kochi
-                </p>
+                <div className=" d-flex align-items-center gap-2">
+                  <h6 className="mb-0 fs-6">Location:</h6>
+                  <p className="section__description mb-0">Ernakulam, Kochi</p>
+                </div>
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="fs-6 mb-0">Phone:</h6>
                   <p className="section__description mb-0">+91 9526103163</p>
@@ -65,11 +66,13 @@ const Contact = () => {
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">suhailmhd070@gmail.com</p>
+                  <p className="section__description mb-0">
+                    suhailmhd070@gmail.com
+                  </p>
                 </div>
 
-                <h6 className="fw-bold mt-4">Follow Us</h6>
-
+                {/* <h6 className="fw-bold mt-4">Follow Us</h6> */}
+                {/* 
                 <div className=" d-flex align-items-center gap-4 mt-3">
                   {socialLinks.map((item, index) => (
                     <Link
@@ -80,7 +83,7 @@ const Contact = () => {
                       <i class={item.icon}></i>
                     </Link>
                   ))}
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>

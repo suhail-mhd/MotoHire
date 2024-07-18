@@ -40,12 +40,14 @@ const Footer = (props) => {
               </h1>
             </div>
             <br />
+            <div>
             <p className="footer__logo-content">
             Are you looking to rent a car in Kerala? Then, you have come to the right place. MotoHire, the premium rental services provides car booking in Kochi and other locations of the state. With attractive prices, our car rental services remove those frustrating transport woes from the minds of NRIs and tourists.
             </p>
+            </div>
           </Col>
 
-          <Col lg="2" md="4" sm="6">
+          <Col lg="4" md="4" sm="6">
             <div className="mb-4">
               <h5 className="footer__link-title">Quick Links</h5>
               <ListGroup>
@@ -58,25 +60,12 @@ const Footer = (props) => {
             </div>
           </Col>
 
-          <Col lg="3" md="4" sm="6">
+          <Col lg="4" md="4" sm="6">
             <div className="mb-4">
               <h5 className="footer__link-title mb-4">Contact Us</h5>
-              <p className="office__info">Ernakulam, Kochi</p>
-              <p className="office__info">Phone: +91 9526103163</p>
-              <p className="office__info">Email: suhailmhd070@gmail.com</p>
-            </div>
-          </Col>
-
-          <Col lg="3" md="4" sm="12">
-            <div className="mb-4">
-              <h5 className="footer__link-title">Newsletter</h5>
-              <p className="section__description">Subscribe our newsletter</p>
-              <div className="newsletter">
-                <input type="email" placeholder="Email" />
-                <span>
-                  <i class="ri-send-plane-line"></i>
-                </span>
-              </div>
+              <p className="office__info"><b>Location: </b>Ernakulam, Kochi</p>
+              <p className="office__info"><b>Phone: </b>+91 9526103163</p>
+              <p className="office__info"><b>Email: </b>suhailmhd070@gmail.com</p>
             </div>
           </Col>
 

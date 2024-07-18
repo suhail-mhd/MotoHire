@@ -2,14 +2,15 @@ import React from "react";
 import "../../styles/our-member.css";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import ava01 from "../../assets/all-images/ava-1.jpg";
-import ava02 from "../../assets/all-images/ava-2.jpg";
-import ava03 from "../../assets/all-images/ava-3.jpg";
+import ava01 from "../../assets/all-images/blog-img/about2.jpg";
+import ava02 from "../../assets/all-images/blog-img/about5.jpg";
+import ava03 from "../../assets/all-images/blog-img/about3.jpg";
+import ava04 from "../../assets/all-images/blog-img/about4.jpg";
 
 const OUR__MEMBERS = [
   {
-    name: "Jhon Doe",
-    experience: "5 years of experience",
+    name: "Wide Range of Vehicles",
+    desc: "From compact cars and sedans to SUVs and luxury vehicles, our diverse fleet ensures that you find the perfect car for any occasion.",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -18,8 +19,8 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "David Lisa",
-    experience: "5 years of experience",
+    name: "Affordable Rates",
+    desc: "We offer competitive pricing with no hidden fees, making it easy for you to plan your travel budget.",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -28,8 +29,8 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "Hilton King",
-    experience: "5 years of experience",
+    name: "Flexible Rental Options",
+    desc: "Whether you need a car for a day, a week, or longer, we provide flexible rental periods to suit your needs.",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -38,13 +39,13 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "Jhon Doe",
-    experience: "5 years of experience",
+    name: "24/7 Customer Support",
+    desc: "Our dedicated customer support team is available around the clock to assist you with any queries or issues.",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
     linkedinUrl: "#",
-    imgUrl: ava01,
+    imgUrl: ava04,
   },
 ];
 
@@ -58,27 +59,11 @@ const OurMembers = () => {
               <img src={item.imgUrl} alt="" className="w-100" />
 
               <div className="single__member-social">
-                <Link to={item.fbUrl}>
-                  <i class="ri-facebook-line"></i>
-                </Link>
-                <Link to={item.twitUrl}>
-                  <i class="ri-twitter-line"></i>
-                </Link>
-
-                <Link to={item.linkedinUrl}>
-                  <i class="ri-linkedin-line"></i>
-                </Link>
-
-                <Link to={item.instUrl}>
-                  <i class="ri-instagram-line"></i>
-                </Link>
+                <p style={{color:"#f4f4f4", padding:"0 1em"}}>{item.desc}</p>
               </div>
             </div>
 
-            <h6 className="text-center mb-0 mt-3">{item.name}</h6>
-            <p className="section__description text-center">
-              {item.experience}
-            </p>
+            <h6 className="text-center mb-4 mt-4" style={{fontWeight:'bold'}}>{item.name}</h6>
           </div>
         </Col>
       ))}
