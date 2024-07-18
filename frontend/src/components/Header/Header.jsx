@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import mainLogo from "../../assets/all-images/M.png";
 
 const style = {
   position: "absolute",
@@ -253,15 +254,15 @@ const Header = (props) => {
           <Row>
             <Col lg="4" md="3" sm="4">
               <div className="logo">
-                <h1>
+                
                   <Link to="/home" className=" d-flex align-items-center gap-2">
                     <img
-                      src="../logo.png"
-                      style={{ height: 50 }}
-                      alt="Roadsters Logo"
+                      src={mainLogo}
+                      style={{ width: 200 }}
+                      alt="MOTOHIRE Logo"
                     />
                   </Link>
-                </h1>
+               
               </div>
             </Col>
 

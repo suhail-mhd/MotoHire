@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/about-section.css";
-import aboutImg from "../../assets/all-images/cars-img/bmw-offer.png";
+import aboutImg from "../../assets/all-images/about.png";
 
 const AboutSection = ({ aboutClass }) => {
   return (
@@ -10,7 +10,7 @@ const AboutSection = ({ aboutClass }) => {
       style={
         aboutClass === "aboutPage"
           ? { marginTop: "0px" }
-          : { marginTop: "280px" }
+          : { marginTop: "0" }
       }
     >
       <Container>
@@ -20,7 +20,7 @@ const AboutSection = ({ aboutClass }) => {
               <h4 className="section__subtitle">About Us</h4>
               <h2 className="section__title" style={{fontWeight:'bold'}}>Welcome to MotoHire</h2>
               <p className="section__description">
-              Since 1992 we have not only committed ourselves to delivering exceptional repair and maintenance service to the worldwide automotive owners.
+              Welcome to MotoHire, your trusted partner for car rentals. At MotoHire, we believe in providing seamless and affordable transportation solutions to meet your diverse travel needs. Whether you're planning a weekend getaway, a business trip, or simply need a vehicle for daily errands, we have the perfect car for you.
               </p>
 
               <div className="about__section-item d-flex align-items-center">

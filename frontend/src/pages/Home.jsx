@@ -18,7 +18,7 @@ const Home = () => {
       ? (steps = [
           {
             id: "1",
-            message: `Hai ${loc1.name} Iam Abella . your Personal Chat Assistant.`,
+            message: `Hai ${loc1.name} Iam John . your Personal Chat Assistant.`,
             trigger: "4",
           },
           {
@@ -90,7 +90,7 @@ const Home = () => {
           {
             id: "1",
             message:
-              "Hai Iam Abella . Roadsters Personal Chat Assistant.Whats Your Name",
+              "Hai Iam John . MOtoHire Personal Chat Assistant.Whats Your Name",
             trigger: "2",
           },
           {
@@ -222,7 +222,7 @@ const Home = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="12" className="text-center mb-5">
+            <Col lg="12" className="text-center mt-5 mb-5">
               <h6 className="section__subtitle">Come with</h6>
               <h2 className="section__title" style={{ fontWeight: "bold" }}>
                 Hot Offers
