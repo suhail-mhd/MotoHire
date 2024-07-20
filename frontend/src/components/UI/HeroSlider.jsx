@@ -1,10 +1,13 @@
 import React from "react";
 
 import Slider from "react-slick";
-import { Container } from "reactstrap";
+import { Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import "../../styles/hero-slider.css";
+import "./HeroSlider.css";
+import hero from "../../assets/all-images/hero-car.png";
+import { Row } from "react-bootstrap";
 
 const HeroSlider = () => {
   const settings = {
@@ -46,23 +49,39 @@ const HeroSlider = () => {
     //   </div> */}
 
     // </Slider>
-      <div className="m-0" style={{height:"100vh", backgroundColor:"#f1f1f1"}}>
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-black pb-3">Drive Your Adventure:</h4>
-            <h1 className="text-black pb-4">Hassle-Free Car Rentals Await!</h1>
-{/* 
+    <div className="m-0 gradient_background" style={{ height: "100vh" }}>
+      <Container>
+        <Row>
+          <Col lg="6" md="6" sm="12">
+            <div className="slider__content ">
+              <h2 className="text-white pb-3">Drive Your Adventure:</h2>
+              <h1 className="text-white pb-4">
+                Hassle-Free <span className="outline-text">Car Rentals</span> <br /> Await!
+              </h1>
+              {/* 
             <button className="btn reserve__btn mt-4">
               <Link to="/cars">Reserve Now</Link>
             </button> */}
-            <button className="header__btn btn ">
-                <Link to="/cars">
-                Reserve Now
-                </Link>
+              <button className="header__btn btn ">
+                <Link to="/cars">Reserve Now</Link>
               </button>
-          </div>
-        </Container>
-      </div>
+            </div>
+          </Col>
+          <Col lg="6" md="6" sm="12">
+            <div className="hero-img-style">
+              <div className="hero-img">
+              <img src={hero} alt="hero-img"/>
+
+              </div>
+              <div className="glow-circle"></div>
+              <div className="bg-logo">
+                <p>MOTOHIRE</p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

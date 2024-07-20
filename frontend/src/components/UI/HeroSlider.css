@@ -1,9 +1,10 @@
-.banner .slider__content h1{
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
+
+.slider__content h1{
     font-family: 'ICA Rubrik';
-    font-size: 16em;
-    line-height: 1em;
-    color: #25283B;
-    position: relative;
+}
+.slider__content h1 span{
+    font-family: 'ICA Rubrik';
 }
 .banner .slider__content h1::after{
     position: absolute;
@@ -13,3 +14,61 @@
     -webkit-text-stroke: 2px #d2d2d2;
     color: transparent;
 }
+
+.gradient_background {
+    /* background: linear-gradient(90deg, #0062ff, #da61ff),url("../assets/all-images/slider-img/slider-1.jpg"); */
+    background: linear-gradient(#0f3443, #34e89e),
+      url("../../assets/all-images/building.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  @supports((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+    .outline-text {
+        color: transparent;
+        -webkit-text-stroke: 1px white;
+		text-stroke: 1px white;
+    }
+}
+
+.hero-img-style {
+    position: relative;
+}
+
+.hero-img {
+    position: relative;
+    z-index: 30;
+}
+
+.glow-circle {
+    position: "absolute";
+    border: 20px solid #34e89e;
+    height: 180px;
+    width: 180px;
+    top: 0;
+    right: 0;
+    margin-left: 31rem;
+    margin-top: -16rem;
+    border-radius:100px;
+    box-shadow: 0 0 50px #34e89e, inset 0 0 50px #34e89e;
+    -webkit-animation: pulse 2s linear 1s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% { box-shadow:0 0 8px #34e89e, inset 0 0 8px #34e89e; }
+    50% { box-shadow:0 0 16px #34e89e, inset 0 0 14px #34e89e; }
+    100% { box-shadow:0 0 8px #34e89e, inset 0 0 8px #34e89e; }
+  }
+
+  .bg-logo {
+    position: absolute;
+    font-weight: bold;
+    margin-top: -17rem;
+    margin-left: -3rem;
+    font-size: 9rem;
+    opacity: 0.1;
+    color: white;
+    font-family: 'Teko';
+  }
