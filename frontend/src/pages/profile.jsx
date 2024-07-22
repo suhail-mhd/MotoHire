@@ -1,460 +1,606 @@
-import React, { useEffect, useState } from 'react'
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container'
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import {useParams} from 'react-router-dom'
-import axios from 'axios';
-import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Modal from "@mui/material/Modal";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import FormControl from "@mui/material/FormControl";
+import NativeSelect from "@mui/material/NativeSelect";
+import InputLabel from "@mui/material/InputLabel";
 
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 'auto',
-    height:'auto',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "auto",
+  height: "auto",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 function Profile(id) {
-    const [propic , serPropic] = useState(true)
-    const userid = useParams()
-    const [userDataValue , setUserDataValue] = useState({})
-    const [updateRes, setUpdateRes] = useState()
-    const [snackOpen, snackClose] = useState(false)
-    const [render, setRender] = useState(0)
-    // console.log(userDataValue);
+  const [propic, serPropic] = useState(true);
+  const userid = useParams();
+  const [userDataValue, setUserDataValue] = useState({});
+  const [updateRes, setUpdateRes] = useState();
+  const [snackOpen, snackClose] = useState(false);
+  const [render, setRender] = useState(0);
+  // console.log(userDataValue);
 
+  // edit form states
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState();
+  const [email, setEmail] = useState();
+  const [district, setDistrict] = useState();
+  const [age, setAge] = useState();
+  const [address, setAddress] = useState();
+  //
 
-    // edit form states
-        const [name,setName] = useState('')
-        const [phone,setPhone] = useState('')
-        const [gender,setGender] = useState()
-        const [email,setEmail] = useState()
-        const [district,setDistrict] = useState()
-        const [age,setAge] = useState()
-        const [address,setAddress] = useState()
-    // 
+  // snackbar
+  const SnackClose = () => {
+    // if (reason === 'clickaway') {
+    //   return;
+    // }
 
+    snackClose(false);
+  };
 
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={SnackClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
+  //
 
-   
+  // password rest modal
+  const [passOpen, SetPassOpen] = useState(false);
+  const HandlePassOpen = () => SetPassOpen(true);
+  const HandlePassClose = () => SetPassOpen(false);
 
-    // snackbar
-    const SnackClose = () => {
-        // if (reason === 'clickaway') {
-        //   return;
-        // }
-    
-        snackClose(false);
-      };
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState();
 
-    const action = (
-        <React.Fragment>
-          <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={SnackClose}
-          >
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        </React.Fragment>
-      );
+  const PasswordResetHandle = (e) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      axios
+        .patch(`/api/user/passwordreset/${userid.id}`, { password })
+        .then((res) => {
+          console.log(res.data.message);
+          setUpdateRes(res.data.message);
+          snackClose(true);
+        });
+      setRender(render + 1);
+      SetPassOpen(false);
+    } else {
+      snackClose(true);
+      setUpdateRes("Password Not Matching");
+      console.log("Password Not Matching");
+    }
+  };
 
+  //
 
-      
-
-    // 
-
-
-
-    // password rest modal
-        const [passOpen , SetPassOpen] = useState(false)
-        const HandlePassOpen = () => SetPassOpen(true);
-        const HandlePassClose = () => SetPassOpen(false);
-
-
-        const [password, setPassword] = useState('')
-        const [confirmPassword , setConfirmPassword] = useState()
-
-
-        const PasswordResetHandle = (e) => {
-            e.preventDefault();
-            if(password === confirmPassword){
-                axios.patch(`/api/user/passwordreset/${userid.id}`,{password}).then((res)=>{
-                    console.log(res.data.message);
-                    setUpdateRes(res.data.message)
-                    snackClose(true)
-                })
-                setRender(render+1)
-                SetPassOpen(false)
-            }else{
-                snackClose(true)
-                setUpdateRes("Password Not Matching")
-                console.log("Password Not Matching");
-            }
-
-        }
-
-    // 
-
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
-  }
+  };
   const handleClose = () => setOpen(false);
 
-  
-
-
-    const userData = () => {
-        try {
-            axios.get(`/api/user/getprofileuserdata/${userid.id}`).then((res)=>{
-                setUserDataValue(res.data.user)  
-                // console.log(res.data); 
-                setName(res.data.user.name)
-                setEmail(res.data.user.email)
-                setPhone(res.data.user.phone)
-                setGender(res.data.user.gender)
-                setDistrict(res.data.user.district)
-                setAge(res.data.user.age)
-                setAddress(res.data.user.address)
-            })
-
-         
-        } catch (error) {
-            console.log(error);
-        }
+  const userData = () => {
+    try {
+      axios.get(`/api/user/getprofileuserdata/${userid.id}`).then((res) => {
+        setUserDataValue(res.data.user);
+        // console.log(res.data);
+        setName(res.data.user.name);
+        setEmail(res.data.user.email);
+        setPhone(res.data.user.phone);
+        setGender(res.data.user.gender);
+        setDistrict(res.data.user.district);
+        setAge(res.data.user.age);
+        setAddress(res.data.user.address);
+      });
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const userDataSubmit = (e) => {
-        e.preventDefault();
-            // console.log(name, email ,phone , gender , district , age ,address);
+  const userDataSubmit = (e) => {
+    e.preventDefault();
+    // console.log(name, email ,phone , gender , district , age ,address);
 
-
-            try {
-                axios.patch(`/api/user/userupdate/${userid.id}`,
-                  {  name, email ,phone , gender , district , age ,address}
-                ).then((res)=>{
-                    // console.log(res.data.message);
-                    setUpdateRes(res.data.message)
-                    snackClose(true)
-                })
-                setRender(render+1)
-                setOpen(false)
-            } catch (error) {
-                snackClose(false)
-                console.log("Error occured while data updating",error);
-            }
+    try {
+      axios
+        .patch(`/api/user/userupdate/${userid.id}`, {
+          name,
+          email,
+          phone,
+          gender,
+          district,
+          age,
+          address,
+        })
+        .then((res) => {
+          // console.log(res.data.message);
+          setUpdateRes(res.data.message);
+          snackClose(true);
+        });
+      setRender(render + 1);
+      setOpen(false);
+    } catch (error) {
+      snackClose(false);
+      console.log("Error occured while data updating", error);
     }
+  };
 
-    
-    
-
-
-    useEffect(()=>{
-        userData()
-    },[render])
-
-
-
-
-
+  useEffect(() => {
+    userData();
+  }, [render]);
 
   return (
     <div>
-      <br/>
-        <Snackbar
+      <br />
+      <Snackbar
         open={snackOpen}
         autoHideDuration={6000}
         onClose={snackClose}
         message={updateRes}
         action={action}
       />
-        <Container fixed>
-            <Grid container >
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}  >
-                {
-                   userDataValue.gender === "Male"  ?
-                    <Stack sx={{alignItems:'center',marginTop:7}} >
-                    <Avatar sx={{width:300,height:300}}  src='https://st4.depositphotos.com/11634452/41441/v/600/depositphotos_414416680-stock-illustration-picture-profile-icon-male-icon.jpg' />
-                </Stack>
-                :
-                <Stack sx={{alignItems:'center',marginTop:7}} >
-                <Avatar sx={{width:300,height:300}}  src='https://www.soniaworkmanlifecoaching.com/wp-content/uploads/bb-plugin/cache/anonymous-profile-square.jpg' />
-            </Stack>
-                }
-                            
-
-                            
-                        </Grid>
+      <Container fixed>
+        <Grid container>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            {userDataValue.gender === "Male" ? (
+              <Stack sx={{ alignItems: "center", marginTop: 7 }}>
+                <Avatar
+                  sx={{ width: 300, height: 300 }}
+                  src="https://st4.depositphotos.com/11634452/41441/v/600/depositphotos_414416680-stock-illustration-picture-profile-icon-male-icon.jpg"
+                />
+              </Stack>
+            ) : (
+              <Stack sx={{ alignItems: "center", marginTop: 7 }}>
+                <Avatar
+                  sx={{ width: 300, height: 300 }}
+                  src="https://www.soniaworkmanlifecoaching.com/wp-content/uploads/bb-plugin/cache/anonymous-profile-square.jpg"
+                />
+              </Stack>
+            )}
+          </Grid>
+        </Grid>
+        <Box>
+          <Grid container spacing={1}>
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: 50,
+                  width: "100%",
+                }}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  Name: {userDataValue.name}
+                </Typography>
+              </Paper>
             </Grid>
-                <Box>
-                    <Grid container spacing={1} >
-                     
-
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                            <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:50,width:'100%'}} >
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                Name: {userDataValue.name}
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                        <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:'auto',minHeight:50,width:'100%'}} elevation={3} >
-                            
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                Email: {userDataValue.email}
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                            <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:50,width:'100%'}} elevation={3} >
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                Phone: {userDataValue.phone}
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                        <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:50,width:'100%'}} elevation={3} >
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                Age: {userDataValue.age}
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                            <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:50,width:'100%'}} elevation={3} >
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                Gender: {userDataValue.gender}
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item sm={12} xs={12}  md={6} lg={6} xl={6} >
-                        <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:50,width:'100%'}} elevation={3} >
-                            <Typography variant='h5' component='h5' margin='auto' >
-                                District: {userDataValue.district}
-                            </Typography>
-                            </Paper>
-                        </Grid> 
-                        <Grid item sm={12} xs={12}  md={12} lg={12} xl={12}  >
-                        <Box sx={{display:'flex',justifyContent:'center'}} >
-                        <Paper  sx={{display:'flex', justifyContent:'center',marginTop:5,height:'auto',width:'100%'}} elevation={3} >
-                            <Box marginTop={2}  >
-                            <Typography variant='h5' component='h5' margin='auto' sx={{textAlign:'center'}} >
-                                Address:
-                            </Typography>
-                            <Typography variant='h5' component='h5' margin='auto' sx={{margin:2}} >
-                               {userDataValue.address}
-                            </Typography>
-                            </Box>
-                            </Paper>    
-                        </Box>
-                        </Grid> 
-
-                       
-                        
-                    </Grid>
-                  
-                </Box>
-                <Grid container sx={{justifyContent:'center',display:'flex'}} >
-                        <Grid item  >
-                       <Box marginTop={4}  >
-                       <Button variant='contained' sx={{width:200,height:50}} onClick={handleOpen} >Edit</Button>
-                       </Box>
-                       
-                        </Grid>
-                        <Grid item  >
-                       <Box marginTop={4}  marginLeft={2}  >
-                       <Button variant='contained' sx={{width:200,height:50}} onClick={HandlePassOpen} >Reset Password</Button>
-                       </Box>
-                       
-                        </Grid>
-                    </Grid>
-                    <br/>
-                    <br/>
-        </Container>
-       <Grid container >
-            <Grid item xs={12}  >
-            <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-          
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Edit Profile
-          </Typography>
-           <form  onSubmit={userDataSubmit} >
-            <Container >
-           <Grid container mt={5}  >
-           <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2} >
-           {/* <TextField id="outlined-basic" label="Outlined" variant="outlined"  /> */}
-           <TextField
-        
-            label="Name"
-            placeholder="Enter Name"
-            type="text"
-            name="brand"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            sx={{width:'90%'}}
-          />
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: "auto",
+                  minHeight: 50,
+                  width: "100%",
+                }}
+                elevation={3}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  Email: {userDataValue.email}
+                </Typography>
+              </Paper>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}  >
-            <TextField
-        
-        label="Email"
-        placeholder="Enter Name"
-        type="text"
-        name="brand"
-        value={email}
-        onChange={(e)=>setEmail(e.target.value)}
-        sx={{width:'90%'}}
-      />
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: 50,
+                  width: "100%",
+                }}
+                elevation={3}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  Phone: {userDataValue.phone}
+                </Typography>
+              </Paper>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Phone"
-        placeholder="Enter Name"
-        type="text"
-        name="brand"
-        value={phone}
-        onChange={(e)=>setPhone(e.target.value)}
-        sx={{width:'90%'}}
-      />
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: 50,
+                  width: "100%",
+                }}
+                elevation={3}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  Age: {userDataValue.age}
+                </Typography>
+              </Paper>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="District"
-        placeholder="Enter Name"
-        type="text"
-        name="brand"
-        value={district}
-        onChange={(e)=>setDistrict(e.target.value)}
-        sx={{width:'90%'}}
-      />
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: 50,
+                  width: "100%",
+                }}
+                elevation={3}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  Gender: {userDataValue.gender}
+                </Typography>
+              </Paper>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Gender"
-        placeholder="Enter Name"
-        type="text"
-        name="brand"
-        onChange={(e)=>setGender(e.target.value)}
-        value={gender}
-        sx={{width:'90%'}}
-      />
+            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+              <Paper
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  height: 50,
+                  width: "100%",
+                }}
+                elevation={3}
+              >
+                <Typography variant="h5" component="h5" margin="auto">
+                  District: {userDataValue.district}
+                </Typography>
+              </Paper>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Address"
-        placeholder="Enter Name"
-        type="text"
-        name="brand"
-        onChange={(e)=>setAddress(e.target.value)}
-        value={address}
-        sx={{width:'90%'}}
-      />
+            <Grid item sm={12} xs={12} md={12} lg={12} xl={12}>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Paper
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 5,
+                    height: "auto",
+                    width: "100%",
+                  }}
+                  elevation={3}
+                >
+                  <Box marginTop={2}>
+                    <Typography
+                      variant="h5"
+                      component="h5"
+                      margin="auto"
+                      sx={{ textAlign: "center" }}
+                    >
+                      Address:
+                    </Typography>
+                    <Typography
+                      variant="h5"
+                      component="h5"
+                      margin="auto"
+                      sx={{ margin: 2 }}
+                    >
+                      {userDataValue.address}
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Box>
             </Grid>
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Age"
-        placeholder="Enter Age"
-        type="number"
-        name="brand"
-        value={age}
-        onChange={(e)=>setAge(e.target.value)}
-        sx={{width:'90%'}}
-      />
-            </Grid>
-            
-            <Box sx={{display:'flex',justifyContent:'center'}} >
-               <Button type='submit' sx={{height:50}} variant='contained' >Submit</Button>
-               </Box>
-           
-           </Grid>
-           </Container>
-           </form>
+          </Grid>
         </Box>
-      </Modal>
-            </Grid>
-       </Grid>
+        <Grid container sx={{ justifyContent: "center", display: "flex" }}>
+          <Grid item>
+            <Box marginTop={4}>
+              <Button
+                variant="contained"
+                sx={{ width: 200, height: 50 }}
+                onClick={handleOpen}
+              >
+                Edit
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box marginTop={4} marginLeft={2}>
+              <Button
+                variant="contained"
+                sx={{ width: 200, height: 50 }}
+                onClick={HandlePassOpen}
+              >
+                Reset Password
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+        <br />
+        <br />
+      </Container>
+      <Grid container>
+        <Grid item xs={12}>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Edit Profile
+              </Typography>
+              <form onSubmit={userDataSubmit}>
+                <Container>
+                  <Grid container mt={5}>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      {/* <TextField id="outlined-basic" label="Outlined" variant="outlined"  /> */}
+                      <TextField
+                        label="Name"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        sx={{ width: "90%" }}
+                        variant="standard"
+                      />
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      <TextField
+                        label="Email"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        sx={{ width: "90%" }}
+                        variant="standard"
+                      />
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      <TextField
+                        label="Phone"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        sx={{ width: "90%" }}
+                        variant="standard"
+                      />
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      {/* <TextField
+                        label="District"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        value={district}
+                        onChange={(e) => setDistrict(e.target.value)}
+                        sx={{ width: "90%" }}
+                      /> */}
+                      <FormControl
+                        variant="standard"
+                        sx={{ m: 1, minWidth: 120 }}
+                      >
+                        <InputLabel htmlFor="demo-customized-select-native">
+                          District
+                        </InputLabel>
+                        <NativeSelect
+                          id="demo-customized-select-native"
+                          value={district}
+                          onChange={(e) => setDistrict(e.target.value)}
+                          label="district"
+                        >
+                          <option aria-label="None" value="" />
+                          <option>Kottayam</option>
+                          <option>Ernakulam</option>
+                          <option>Kozhikode</option>
+                          <option>Idukki</option>
+                          <option>Malappuram</option>
+                          <option>kannur</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      {/* <TextField
+                        label="Gender"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        onChange={(e) => setGender(e.target.value)}
+                        value={gender}
+                        sx={{ width: "90%" }}
+                      /> */}
+                      <FormControl
+                        variant="standard"
+                        sx={{ m: 1, minWidth: 120 }}
+                      >
+                        <InputLabel htmlFor="demo-customized-select-native">
+                          Gender
+                        </InputLabel>
+                        <NativeSelect
+                          id="demo-customized-select-native"
+                          value={gender}
+                          onChange={(e) => setGender(e.target.value)}
+                          label="gender"
+                        >
+                          <option aria-label="None" value="" />
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Other</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      <TextField
+                        label="Address"
+                        placeholder="Enter Name"
+                        type="text"
+                        name="brand"
+                        onChange={(e) => setAddress(e.target.value)}
+                        value={address}
+                        sx={{ width: "90%" }}
+                        variant="standard"
+                      />
+                    </Grid>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      {/* <TextField
+                        label="Age"
+                        placeholder="Enter Age"
+                        type="number"
+                        name="brand"
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
+                        sx={{ width: "90%" }}
+                      /> */}
+                      <FormControl
+                        variant="standard"
+                        sx={{ m: 1, minWidth: 120 }}
+                      >
+                        <InputLabel htmlFor="demo-customized-select-native">
+                          Age
+                        </InputLabel>
+                        <NativeSelect
+                          id="demo-customized-select-native"
+                          value={age}
+                          onChange={(e) => setAge(e.target.value)}
+                          label="Age"
+                        >
+                          <option aria-label="None" value="" />
+                          <option>18</option>
+                          <option>19</option>
+                          <option>20</option>
+                          <option>21</option>
+                          <option>22</option>
+                          <option>23</option>
+                          <option>24</option>
+                          <option>25</option>
+                          <option>26</option>
+                          <option>27</option>
+                          <option>28</option>
+                          <option>29</option>
+                          <option>30</option>
+                          <option>31</option>
+                          <option>32</option>
+                          <option>33</option>
+                          <option>34</option>
+                          <option>35</option>
+                          <option>36</option>
+                          <option>37</option>
+                          <option>38</option>
+                          <option>39</option>
+                          <option>40</option>
+                          <option>41</option>
+                          <option>42</option>
+                          <option>43</option>
+                          <option>44</option>
+                          <option>45</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </Grid>
 
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        type="submit"
+                        sx={{ height: 50 }}
+                        variant="contained"
+                      >
+                        Submit
+                      </Button>
+                    </Box>
+                  </Grid>
+                </Container>
+              </form>
+            </Box>
+          </Modal>
+        </Grid>
+      </Grid>
 
-       {/* password reset modal */}
-     <Grid container >
-         <Grid item xs={12}>
-         <Modal
-        open={passOpen}
-        onClose={HandlePassClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-           Reset Your Password
-          </Typography>
-        <form onSubmit={PasswordResetHandle} >
-            <Container>
-                <Grid  container mt={5}  >
-                <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Password"
-        placeholder="Enter Password"
-        type="password"
-        name="brand"
-        onChange={(e)=>setPassword(e.target.value)}
-        sx={{width:'90%'}}
-      />
-            </Grid>
+      {/* password reset modal */}
+      <Grid container>
+        <Grid item xs={12}>
+          <Modal
+            open={passOpen}
+            onClose={HandlePassClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Reset Your Password
+              </Typography>
+              <form onSubmit={PasswordResetHandle}>
+                <Container>
+                  <Grid container mt={5}>
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      <TextField
+                        label="Password"
+                        placeholder="Enter Password"
+                        type="password"
+                        name="brand"
+                        onChange={(e) => setPassword(e.target.value)}
+                        sx={{ width: "90%" }}
+                      />
+                    </Grid>
 
-            <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-            <TextField
-        
-        label="Confirm Password"
-        placeholder="Confirm Password"
-        type="password"
-        name="brand"
-        onChange={(e)=>setConfirmPassword(e.target.value)}
-        sx={{width:'90%'}}
-      />
-            </Grid>
-
-           
-        
-                </Grid>
-                <Box sx={{display:'flex',justifyContent:'center'}} >
-               <Button type='submit' sx={{height:40}} variant='contained' >Reset</Button>
-               </Box>
-            </Container>
-        </form>
-        </Box>
-      </Modal>
-
-         </Grid>
-     </Grid>
-       {/*  */}
+                    <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
+                      <TextField
+                        label="Confirm Password"
+                        placeholder="Confirm Password"
+                        type="password"
+                        name="brand"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        sx={{ width: "90%" }}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Box sx={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      type="submit"
+                      sx={{ height: 40 }}
+                      variant="contained"
+                    >
+                      Reset
+                    </Button>
+                  </Box>
+                </Container>
+              </form>
+            </Box>
+          </Modal>
+        </Grid>
+      </Grid>
+      {/*  */}
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

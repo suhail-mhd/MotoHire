@@ -18,6 +18,7 @@ import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import District from "../DistrictSelecting/District";
 import { useSelector } from "react-redux";
+import "./CarItem.css";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -213,13 +214,20 @@ function Cards() {
                 />
               </Box>
               <Box sx={{ marginLeft: 2 }}>
-                <Button
+                {/* <Button
                   variant="contained"
                   sx={{ marginTop: 1 }}
                   onClick={handleSearch}
+                  background="#0f3443"
                 >
                   Search
-                </Button>
+                </Button> */}
+                <button
+                  className="header__btn btn text-white"
+                  onClick={handleSearch}
+                >
+                  Search
+                </button>
               </Box>
             </Box>
           </Grid>
@@ -227,19 +235,20 @@ function Cards() {
       </Container>
 
       <br />
-      <Container maxWidth="xl" style={{ marginBottom:"2rem"}}>
+      <Container maxWidth="xl" style={{ marginBottom: "2rem" }}>
         {SearchData ? (
           <Grid container>
             {searchData.slice(0, visible).map((obj, index) => {
               return (
-                <Grid item xl={3} lg={4} md={4} sm={6} xs={12} key={index}>
+                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={index}>
                   <Card
                     sx={{ maxWidth: 345 }}
                     style={{
                       margin: 15,
                       Height: "auto",
                       position: "relative",
-                      minHeight: 620,
+                      minHeight: 520,
+                      borderRadius: 25,
                     }}
                     className="card"
                   >
@@ -247,7 +256,7 @@ function Cards() {
                       component="img"
                       alt="cars"
                       height="140"
-                      style={{ height: 300, objectFit: "contain" }}
+                      style={{ height: 180, objectFit: "contain" }}
                       key={index}
                       image={obj.imgUrl}
                     />
@@ -259,11 +268,18 @@ function Cards() {
                         }}
                       >
                         <Typography gutterBottom variant="h5" component="div">
-                          <strong>{obj.brand} {obj.model}</strong>
+                          <strong>
+                            {obj.brand} {obj.model}
+                          </strong>
                           {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />}   /> */}
                         </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div" style={{fontSize:"15px"}}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          style={{ fontSize: "15px" }}
+                        >
                           ${obj.price}/day
                         </Typography>
                       </div>
@@ -274,10 +290,15 @@ function Cards() {
                             variant="BUTTON TEXT"
                             component="div"
                           >
-                            <span style={{fontWeight:"bold"}}>Orginal Price :</span> 
+                            <span style={{ fontWeight: "bold" }}>
+                              Orginal Price :
+                            </span>
                           </Typography>
                           <Typography
-                            style={{ textDecoration: "line-through", marginLeft:"10px" }}
+                            style={{
+                              textDecoration: "line-through",
+                              marginLeft: "10px",
+                            }}
                             variant="subtitle2"
                           >
                             ${obj.prevAmount}
@@ -285,7 +306,10 @@ function Cards() {
                         </Box>
                       ) : null}
                       <Typography variant="subtitle2" color="text.secondary">
-                        <span style={{fontWeight:"bold"}}>Available in :</span> {obj.location}
+                        <span style={{ fontWeight: "bold" }}>
+                          Available in :
+                        </span>{" "}
+                        {obj.location}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -295,18 +319,13 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 0, position: "absolute" }}>
-                      <Button
-                        className="btn"
+                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                      <button
+                        className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
-                        style={{
-                          color: "white",
-                          margin: 10,
-                          backgroundColor: "#016DD9",
-                        }}
                       >
-                        BOOK NOW
-                      </Button>
+                        Book Now
+                      </button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -317,14 +336,15 @@ function Cards() {
           <Grid container>
             {lowToHighData.slice(0, visible).map((obj, index) => {
               return (
-                <Grid item xl={3} lg={4} md={4} sm={6} xs={12} key={index}>
+                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={index}>
                   <Card
                     sx={{ maxWidth: 345 }}
                     style={{
                       margin: 15,
                       Height: "auto",
                       position: "relative",
-                      minHeight: 620,
+                      minHeight: 520,
+                      borderRadius: 25,
                     }}
                     className="card"
                   >
@@ -333,7 +353,7 @@ function Cards() {
                       alt="cars"
                       height="140"
                       key={index}
-                      style={{ height: 300, objectFit: "contain" }}
+                      style={{ height: 180, objectFit: "contain" }}
                       image={obj.imgUrl}
                     />
                     <CardContent>
@@ -344,10 +364,17 @@ function Cards() {
                         }}
                       >
                         <Typography gutterBottom variant="h5" component="div">
-                          <strong>{obj.brand} {obj.model}</strong>
+                          <strong>
+                            {obj.brand} {obj.model}
+                          </strong>
                         </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div" style={{fontSize:"15px"}}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          style={{ fontSize: "15px" }}
+                        >
                           ${obj.price}/day
                         </Typography>
                       </div>
@@ -358,10 +385,15 @@ function Cards() {
                             variant="BUTTON TEXT"
                             component="div"
                           >
-                            <span style={{fontWeight:"bold"}}>Orginal Price :</span> 
+                            <span style={{ fontWeight: "bold" }}>
+                              Orginal Price :
+                            </span>
                           </Typography>
                           <Typography
-                            style={{ textDecoration: "line-through", marginLeft:"10px" }}
+                            style={{
+                              textDecoration: "line-through",
+                              marginLeft: "10px",
+                            }}
                             variant="subtitle2"
                           >
                             ${obj.prevAmount}
@@ -369,7 +401,10 @@ function Cards() {
                         </Box>
                       ) : null}
                       <Typography variant="subtitle2" color="text.secondary">
-                        <span style={{fontWeight:"bold"}}>Available in :</span> {obj.location}
+                        <span style={{ fontWeight: "bold" }}>
+                          Available in :
+                        </span>{" "}
+                        {obj.location}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -379,18 +414,13 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 0, position: "absolute" }}>
-                      <Button
-                        className="btn"
+                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                      <button
+                        className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
-                        style={{
-                          color: "white",
-                          margin: 10,
-                          backgroundColor: "#016DD9",
-                        }}
                       >
-                        BOOK NOW
-                      </Button>
+                        Book Now
+                      </button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -401,14 +431,15 @@ function Cards() {
           <Grid container>
             {highToLowData.slice(0, visible).map((obj, index) => {
               return (
-                <Grid item xl={3} lg={4} md={4} sm={6} xs={12} key={index}>
+                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={index}>
                   <Card
                     sx={{ maxWidth: 345 }}
                     style={{
                       margin: 15,
                       Height: "auto",
                       position: "relative",
-                      minHeight: 620,
+                      minHeight: 520,
+                      borderRadius: 25,
                     }}
                     className="card"
                   >
@@ -417,7 +448,7 @@ function Cards() {
                       alt="cars"
                       height="140"
                       key={index}
-                      style={{ height: 300, objectFit: "contain" }}
+                      style={{ height: 180, objectFit: "contain" }}
                       image={obj.imgUrl}
                     />
                     <CardContent>
@@ -428,10 +459,17 @@ function Cards() {
                         }}
                       >
                         <Typography gutterBottom variant="h5" component="div">
-                          <strong>{obj.brand} {obj.model}</strong>
+                          <strong>
+                            {obj.brand} {obj.model}
+                          </strong>
                         </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div" style={{fontSize:"15px"}}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          style={{ fontSize: "15px" }}
+                        >
                           ${obj.price}/day
                         </Typography>
                       </div>
@@ -442,10 +480,15 @@ function Cards() {
                             variant="BUTTON TEXT"
                             component="div"
                           >
-                            <span style={{fontWeight:"bold"}}>Orginal Price :</span> 
+                            <span style={{ fontWeight: "bold" }}>
+                              Orginal Price :
+                            </span>
                           </Typography>
                           <Typography
-                            style={{ textDecoration: "line-through", marginLeft:"10px" }}
+                            style={{
+                              textDecoration: "line-through",
+                              marginLeft: "10px",
+                            }}
                             variant="subtitle2"
                           >
                             ${obj.prevAmount}
@@ -453,7 +496,10 @@ function Cards() {
                         </Box>
                       ) : null}
                       <Typography variant="subtitle2" color="text.secondary">
-                        <span style={{fontWeight:"bold"}}>Available in :</span> {obj.location}
+                        <span style={{ fontWeight: "bold" }}>
+                          Available in :
+                        </span>{" "}
+                        {obj.location}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -463,18 +509,13 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 0, position: "absolute" }}>
-                      <Button
-                        className="btn"
+                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                      <button
+                        className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
-                        style={{
-                          color: "white",
-                          margin: 10,
-                          backgroundColor: "#016DD9",
-                        }}
                       >
-                        BOOK NOW
-                      </Button>
+                        Book Now
+                      </button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -485,14 +526,15 @@ function Cards() {
           <Grid container>
             {DistrictSort.slice(0, visible).map((obj, index) => {
               return (
-                <Grid item xl={3} lg={4} md={4} sm={6} xs={12} key={index}>
+                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={index}>
                   <Card
                     sx={{ maxWidth: 345 }}
                     style={{
                       margin: 15,
                       Height: "auto",
                       position: "relative",
-                      minHeight: 620,
+                      minHeight: 520,
+                      borderRadius: 25,
                     }}
                     className="card"
                   >
@@ -501,7 +543,7 @@ function Cards() {
                       alt="cars"
                       height="140"
                       key={index}
-                      style={{ height: 300, objectFit: "contain" }}
+                      style={{ height: 180, objectFit: "contain" }}
                       image={obj.imgUrl}
                     />
                     <CardContent>
@@ -512,10 +554,17 @@ function Cards() {
                         }}
                       >
                         <Typography gutterBottom variant="h5" component="div">
-                          <strong>{obj.brand} {obj.model}</strong>
+                          <strong>
+                            {obj.brand} {obj.model}
+                          </strong>
                         </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div" style={{fontSize:"15px"}}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          style={{ fontSize: "15px" }}
+                        >
                           ${obj.price}/day
                         </Typography>
                       </div>
@@ -526,10 +575,15 @@ function Cards() {
                             variant="BUTTON TEXT"
                             component="div"
                           >
-                            <span style={{fontWeight:"bold"}}>Orginal Price :</span> 
+                            <span style={{ fontWeight: "bold" }}>
+                              Orginal Price :
+                            </span>
                           </Typography>
                           <Typography
-                            style={{ textDecoration: "line-through", marginLeft:"10px" }}
+                            style={{
+                              textDecoration: "line-through",
+                              marginLeft: "10px",
+                            }}
                             variant="subtitle2"
                           >
                             ${obj.prevAmount}
@@ -537,7 +591,10 @@ function Cards() {
                         </Box>
                       ) : null}
                       <Typography variant="subtitle2" color="text.secondary">
-                        <span style={{fontWeight:"bold"}}>Available in : </span>{obj.location}
+                        <span style={{ fontWeight: "bold" }}>
+                          Available in :{" "}
+                        </span>
+                        {obj.location}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -547,18 +604,13 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 0, position: "absolute" }}>
-                      <Button
-                        className="btn"
+                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                      <button
+                        className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
-                        style={{
-                          color: "white",
-                          margin: 10,
-                          backgroundColor: "#016DD9",
-                        }}
                       >
-                        BOOK NOW
-                      </Button>
+                        Book Now
+                      </button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -569,14 +621,15 @@ function Cards() {
           <Grid container>
             {carsData.slice(0, visible).map((obj, index) => {
               return (
-                <Grid item xl={3} lg={4} md={4} sm={6} xs={12} key={index}>
+                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={index}>
                   <Card
                     sx={{ maxWidth: 345 }}
                     style={{
                       margin: 15,
                       Height: "auto",
                       position: "relative",
-                      minHeight: 620,
+                      minHeight: 520,
+                      borderRadius: 25,
                     }}
                     className="card"
                   >
@@ -585,7 +638,7 @@ function Cards() {
                       alt="cars"
                       height="140"
                       key={index}
-                      style={{ height: 300, objectFit: "contain" }}
+                      style={{ height: 180, objectFit: "contain" }}
                       image={obj.imgUrl}
                     />
                     <CardContent>
@@ -596,10 +649,17 @@ function Cards() {
                         }}
                       >
                         <Typography gutterBottom variant="h5" component="div">
-                          <strong>{obj.brand} {obj.model}</strong>
+                          <strong>
+                            {obj.brand} {obj.model}
+                          </strong>
                         </Typography>
 
-                        <Typography gutterBottom variant="h6" component="div" style={{fontSize:"15px"}}>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          style={{ fontSize: "15px" }}
+                        >
                           ${obj.price}/day
                         </Typography>
                       </div>
@@ -610,10 +670,15 @@ function Cards() {
                             variant="BUTTON TEXT"
                             component="div"
                           >
-                            <span style={{fontWeight:"bold"}}>Orginal Price :</span> 
+                            <span style={{ fontWeight: "bold" }}>
+                              Orginal Price :
+                            </span>
                           </Typography>
                           <Typography
-                            style={{ textDecoration: "line-through", marginLeft:"10px" }}
+                            style={{
+                              textDecoration: "line-through",
+                              marginLeft: "10px",
+                            }}
                             variant="subtitle2"
                           >
                             ${obj.prevAmount}
@@ -621,7 +686,10 @@ function Cards() {
                         </Box>
                       ) : null}
                       <Typography variant="subtitle2" color="text.secondary">
-                        <span style={{fontWeight:"bold"}}>Available in :</span> {obj.location}
+                        <span style={{ fontWeight: "bold" }}>
+                          Available in :
+                        </span>{" "}
+                        {obj.location}
                       </Typography>
 
                       <Typography
@@ -632,18 +700,13 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 0, position: "absolute" }}>
-                      <Button
-                        className="btn"
+                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                      <button
+                        className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
-                        style={{
-                          color: "white",
-                          margin: 10,
-                          backgroundColor: "#016DD9",
-                        }}
                       >
-                        BOOK NOW
-                      </Button>
+                        Book Now
+                      </button>
                     </CardActions>
                   </Card>
                 </Grid>

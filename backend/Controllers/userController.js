@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const User = require("../Model/userModel/userModel");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../Unitl/jwt");
@@ -460,9 +461,17 @@ const paypal = asyncHandler(async (req, res) => {
 
 // profile
 
+function isValidObjectId(id) {
+  return mongoose.Types.ObjectId.isValid(id);
+}
+
 const getprofileuserdata = asyncHandler(async (req, res) => {
   // console.log(req.params.id);
   const id = req.params.id;
+
+  if (!isValidObjectId(id)) {
+    return res.status(400).send('Invalid User ID');
+  }
 
   const user = await User.findById({ _id: id });
 
@@ -476,7 +485,7 @@ const getprofileuserdata = asyncHandler(async (req, res) => {
 });
 
 const userupdate = asyncHandler(async (req, res) => {
-  // console.log(req.body);
+  // console.log(req.body); 
   const userId = req.params.id;
   // console.log(userId);
 

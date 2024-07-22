@@ -336,7 +336,7 @@ export default function SignUp() {
                     <option>Kozhikode</option>
                     <option>Idukki</option>
                     <option>Malappuram</option>
-                    <option>kannu</option>
+                    <option>kannur</option>
                   </NativeSelect>
                 </FormControl>
               </Grid>
