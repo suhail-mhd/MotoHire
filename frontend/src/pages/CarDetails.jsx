@@ -234,7 +234,7 @@ const CarDetails = ({ match }) => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    ${carData.price}.00 / Day
+                  ₹ {carData.price}.00 / Day
                   </h6>
 
                   <span className=" d-flex align-items-center">
@@ -254,7 +254,7 @@ const CarDetails = ({ match }) => {
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-roadster-line"
-                      style={{ color: "#f9a826" }}
+                      style={{ color: "#34e89e" }}
                     ></i>{" "}
                     {carData.RegNo}
                   </span>
@@ -262,7 +262,7 @@ const CarDetails = ({ match }) => {
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-calendar-check-line"
-                      style={{ color: "#f9a826" }}
+                      style={{ color: "#34e89e" }}
                     ></i>{" "}
                     {carData.register}
                   </span>
@@ -270,7 +270,7 @@ const CarDetails = ({ match }) => {
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-timer-flash-line"
-                      style={{ color: "#f9a826" }}
+                      style={{ color: "#34e89e" }}
                     ></i>{" "}
                     {carData.mileage} kmpl
                   </span>
@@ -284,13 +284,13 @@ const CarDetails = ({ match }) => {
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-wheelchair-line"
-                      style={{ color: "#f9a826" }}
+                      style={{ color: "#34e89e" }}
                     ></i>{" "}
                     {carData.seats} Seats
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
-                    <i class="ri-oil-line" style={{ color: "#f9a826" }}></i>{" "}
+                    <i class="ri-oil-line" style={{ color: "#34e89e" }}></i>{" "}
                     {carData.fueltype}
                   </span>
                 </div>

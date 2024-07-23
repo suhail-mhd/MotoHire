@@ -280,7 +280,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ${obj.price}/day
+                          ₹ {obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -301,7 +301,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ${obj.prevAmount}
+                            ₹ {obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -375,7 +375,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ${obj.price}/day
+                          ₹ {obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -396,7 +396,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ${obj.prevAmount}
+                            ₹ {obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -470,7 +470,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ${obj.price}/day
+                          ₹ {obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -491,7 +491,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ${obj.prevAmount}
+                            ₹ {obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -565,7 +565,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ${obj.price}/day
+                          ₹ {obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -586,7 +586,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ${obj.prevAmount}
+                            ₹ {obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -660,7 +660,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ${obj.price}/day
+                          ₹ {obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -681,7 +681,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ${obj.prevAmount}
+                            ₹ {obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -717,21 +717,33 @@ function Cards() {
       </Container>
       <div style={{ justifyContent: "center", display: "flex" }}>
         {carsData.length === visible ? null : carsData.length ? (
-          <Button onClick={showMoreItem} variant="contained">
+          // <Button onClick={showMoreItem} variant="contained">
+          //   Load More
+          //   <ArrowDropDownIcon />
+          // </Button>
+          <button
+            className="header__btn btn text-white"
+            onClick={showMoreItem}
+            style={{ marginRight: "2rem" }}
+          >
             Load More
             <ArrowDropDownIcon />
-          </Button>
+          </button>
         ) : null}
 
         {visible > 4 ? (
-          <Button
-            onClick={showLessItem}
-            variant="contained"
-            style={{ marginLeft: 5 }}
-          >
+          // <Button
+          //   onClick={showLessItem}
+          //   variant="contained"
+          //   style={{ marginLeft: 5 }}
+          // >
+          //   Load less
+          //   <ArrowDropUpIcon />
+          // </Button>
+          <button className="header__btn btn text-white" onClick={showLessItem}>
             Load less
-            <ArrowDropUpIcon />
-          </Button>
+            <ArrowDropDownIcon />
+          </button>
         ) : null}
       </div>
     </div>

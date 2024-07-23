@@ -217,7 +217,7 @@ function CouponManagement() {
                       <TableCell component="th" scope="row">
                         {Obj.couponName}
                       </TableCell>
-                      <TableCell align="center">$ {Obj.discount}</TableCell>
+                      <TableCell align="center">₹ {Obj.discount}</TableCell>
                       <TableCell align="center">{Obj.CouponCode}</TableCell>
                       <TableCell align="center">
                         <Button

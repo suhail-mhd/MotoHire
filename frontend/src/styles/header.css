@@ -129,7 +129,7 @@
 }
 
 .nav__item:hover {
-  color: #f9a826;
+  color: #34e89e;
 }
 
 .search__box {
@@ -158,7 +158,7 @@
 }
 
 .nav__active {
-  color: #f9a826;
+  color: #34e89e;
 }
 
 @media only screen and (max-width: 768px) {
