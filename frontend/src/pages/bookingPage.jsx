@@ -28,7 +28,7 @@ const style = {
   p: 4,
 };
 
-const RAZKEYID = "rzp_test_01xxpPseANbvFg";
+const RAZKEYID = "rzp_test_NpEuHqzQeFGBVN";
 
 function loadScript(src) {
   return new Promise((resolve) => {
