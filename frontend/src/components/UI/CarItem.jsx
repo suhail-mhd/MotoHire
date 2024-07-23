@@ -319,10 +319,11 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
+                        style={{ bottom: 8, position: "absolute" }}
                       >
                         Book Now
                       </button>
@@ -414,10 +415,11 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
+                        style={{ bottom: 8, position: "absolute" }}
                       >
                         Book Now
                       </button>
@@ -509,10 +511,11 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
+                        style={{ bottom: 8, position: "absolute" }}
                       >
                         Book Now
                       </button>
@@ -604,10 +607,11 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
+                        style={{ bottom: 8, position: "absolute" }}
                       >
                         Book Now
                       </button>
@@ -700,10 +704,11 @@ function Cards() {
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8, position: "absolute" }}>
+                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
+                        style={{ bottom: 8, position: "absolute" }}
                       >
                         Book Now
                       </button>
@@ -742,7 +747,7 @@ function Cards() {
           // </Button>
           <button className="header__btn btn text-white" onClick={showLessItem}>
             Load less
-            <ArrowDropDownIcon />
+            <ArrowDropUpIcon />
           </button>
         ) : null}
       </div>

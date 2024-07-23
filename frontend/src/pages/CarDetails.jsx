@@ -234,7 +234,7 @@ const CarDetails = ({ match }) => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                  ₹ {carData.price}.00 / Day
+                    ₹ {carData.price}.00 / Day
                   </h6>
 
                   <span className=" d-flex align-items-center">
@@ -280,7 +280,6 @@ const CarDetails = ({ match }) => {
                   className=" d-flex align-items-center mt-3"
                   style={{ columnGap: "2.8rem" }}
                 >
-
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-wheelchair-line"
@@ -319,7 +318,7 @@ const CarDetails = ({ match }) => {
                     md={12}
                     lg={4}
                     xl={4}
-                    style={{ display:"flex", marginBottom: "4rem" }}
+                    style={{ display: "flex", marginBottom: "4rem" }}
                   >
                     <Col>
                       <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
@@ -372,7 +371,6 @@ const CarDetails = ({ match }) => {
                     </Col>
                     <Col>
                       <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-
                         <Box
                           sx={{
                             justifyContent: "center",
@@ -433,19 +431,31 @@ const CarDetails = ({ match }) => {
                         {user ? (
                           <div>
                             {totalAmount === 0 ? (
-                              <Button
-                                variant="contained"
+                              // <Button
+                              //   variant="contained"
+                              //   onClick={() => setBookStatus(true)}
+                              // >
+                              //   Book Now
+                              // </Button>
+                              <button
+                                className="header__btn btn text-white"
                                 onClick={() => setBookStatus(true)}
                               >
                                 Book Now
-                              </Button>
+                              </button>
                             ) : (
-                              <Button
-                                variant="contained"
+                              // <Button
+                              //   variant="contained"
+                              //   onClick={() => HandleBookNow(carData._id)}
+                              // >
+                              //   Book Now
+                              // </Button>
+                              <button
+                                className="header__btn btn text-white"
                                 onClick={() => HandleBookNow(carData._id)}
                               >
                                 Book Now
-                              </Button>
+                              </button>
                             )}
                             {test ? (
                               <Button
@@ -493,14 +503,15 @@ const CarDetails = ({ match }) => {
               <Col md={6}>
                 <h2>Reviews</h2>
                 <ListGroup variant="flush">
-                  {carData.reviews?.length > 0 && carData.reviews.map((review) => (
-                    <ListGroup.Item key={review._id}>
-                      <strong>{review.name}</strong>
-                      <Review value={review.rating} />
-                      <p>{review.createdAt.substring(0, 10)}</p>
-                      <p>{review.comment}</p>
-                    </ListGroup.Item>
-                  ))}
+                  {carData.reviews?.length > 0 &&
+                    carData.reviews.map((review) => (
+                      <ListGroup.Item key={review._id}>
+                        <strong>{review.name}</strong>
+                        <Review value={review.rating} />
+                        <p>{review.createdAt.substring(0, 10)}</p>
+                        <p>{review.comment}</p>
+                      </ListGroup.Item>
+                    ))}
                   <ListGroup.Item>
                     {errorProductReview && (
                       <Message variant="danger">{errorProductReview}</Message>
@@ -538,14 +549,14 @@ const CarDetails = ({ match }) => {
 
                         <div>
                           <label />
-                          <Button
-                            variant="contained"
+                          <button
+                            className="header__btn btn text-white"
                             type="submit"
                             value="submit"
                             style={{ float: "right" }}
                           >
-                            Submit
-                          </Button>
+                           Submit
+                          </button>
                         </div>
                       </form>
                     ) : (
