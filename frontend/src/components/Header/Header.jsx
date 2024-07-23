@@ -254,15 +254,13 @@ const Header = (props) => {
           <Row>
             <Col lg="4" md="3" sm="4">
               <div className="logo">
-                
-                  <Link to="/home" className=" d-flex align-items-center gap-2">
-                    <img
-                      src={mainLogo}
-                      style={{ width: 200 }}
-                      alt="MOTOHIRE Logo"
-                    />
-                  </Link>
-               
+                <Link to="/home" className=" d-flex align-items-center gap-2">
+                  <img
+                    src={mainLogo}
+                    style={{ width: 200 }}
+                    alt="MOTOHIRE Logo"
+                  />
+                </Link>
               </div>
             </Col>
 
@@ -328,6 +326,70 @@ const Header = (props) => {
                     {item.display}
                   </NavLink>
                 ))}
+                <div className="mobile__header__top">
+                  <Container>
+                    <Row>
+
+                      {loc && !props.admin ? (
+                        <Col className="ddd">
+                          <MenuItem
+                            onClick={() => navigate(`/profile/${userId}`)}
+                            className="gap-1"
+                          >
+                            Profile
+                          </MenuItem>
+                          <MenuItem
+                            onClick={() => navigate("/bookinghistory")}
+                            className="gap-1"
+                          >
+                            Booking History
+                          </MenuItem>
+                          <div style={{ marginRight: 10 }}>
+                            <MenuItem
+                              sx={{ color: "white" }}
+                              onClick={() => navigate("/wishlist")}
+                              className="gap-1"
+                            >
+                              {" "}
+                              Wishlist
+                            </MenuItem>{" "}
+                          </div>
+                          <MenuItem onClick={handleOpen} className="gap-1">
+                            <i class="ri-logout-circle-line"></i> Logout
+                          </MenuItem>
+                          <h6
+                            style={{
+                              color: "white",
+                              marginTop: "10px",
+                              marginLeft: "1rem",
+                            }}
+                          >
+                            {" "}
+                            Welcome {loc.name}
+                          </h6>
+                        </Col>
+                      ) : (
+                        <Col lg="6" md="6" sm="6">
+                          <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                            <Link
+                              to="/login"
+                              className=" d-flex align-items-center gap-1"
+                            >
+                              <i class="ri-login-circle-line"></i> Login
+                            </Link>
+
+                            <Link
+                              to="/signup"
+                              className=" d-flex align-items-center gap-1"
+                            >
+                              <i class="ri-user-line"></i> Register
+                            </Link>
+                          </div>
+                        </Col>
+                      )}
+                    </Row>
+                  </Container>
+                </div>
               </div>
             </div>
           </div>
