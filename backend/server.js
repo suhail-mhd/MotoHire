@@ -20,7 +20,7 @@ app.use("/api/admin", adminRoute);
 // --------- deployment ---------- 
 
 if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "frontend/build");
+  const buildPath = path.join(__dirname, "frontend", "build");
   
   // Check if the build directory exists
   const fs = require('fs');
