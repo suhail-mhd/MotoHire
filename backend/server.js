@@ -19,26 +19,26 @@ app.use("/api/admin", adminRoute);
 
 // --------- deployment ---------- 
 
-if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "frontend", "build");
+// if (process.env.NODE_ENV === "production") {
+//   const buildPath = path.join(__dirname, "frontend", "build");
   
-  // Check if the build directory exists
-  const fs = require('fs');
-  if (fs.existsSync(buildPath)) {
-    app.use(express.static(buildPath));
+//   // Check if the build directory exists
+//   const fs = require('fs');
+//   if (fs.existsSync(buildPath)) {
+//     app.use(express.static(buildPath));
 
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(buildPath, "index.html"));
-    });
-  } else {
-    console.error("Build directory not found. Please run `npm run build` in the frontend directory.");
-    process.exit(1);
-  }
-} else {
-  app.get("/", (req, res) => {
-    res.status(200).send("Hello Everybody..asdas..");
-  });
-}
+//     app.get("*", (req, res) => {
+//       res.sendFile(path.resolve(buildPath, "index.html"));
+//     });
+//   } else {
+//     console.error("Build directory not found. Please run `npm run build` in the frontend directory.");
+//     process.exit(1);
+//   }
+// } else {
+//   app.get("/", (req, res) => {
+//     res.status(200).send("Hello Everybody..asdas..");
+//   });
+// }
 
 // Error handling
 const notFound = (req, res, next) => {
