@@ -48,7 +48,7 @@ function WishList() {
   }
 
   const getallwishlistdata  = () => {
-    axios.post('/api/user/getallwishlistdata',{USERID}).then((res)=>{
+    axios.post('https://moto-hire-backend.onrender.com/api/user/getallwishlistdata',{USERID}).then((res)=>{
      // console.log(res);
      setCarId(res.data)
    })
@@ -56,7 +56,7 @@ function WishList() {
 
 
  const removefromwishlist = async() => {
-  const data = await  axios.post(`/api/user/removefromwishlist/${removeId}`,{USERID})
+  const data = await  axios.post(`https://moto-hire-backend.onrender.com/api/user/removefromwishlist/${removeId}`,{USERID})
     setRender(true)
     setOpen(false); 
 }

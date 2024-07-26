@@ -17,7 +17,7 @@ function AdminBooking() {
     // console.log(BookingManagement);
 
     const getBookingData = () => {
-        axios.get('/api/admin/adminbookingdata').then((res)=>{
+        axios.get('https://moto-hire-backend.onrender.com/api/admin/adminbookingdata').then((res)=>{
             // console.log(res);
             // SetHistory(res.data.bookingData)
             setBookingManagement(res.data.data)
@@ -27,7 +27,7 @@ function AdminBooking() {
     const completeHandle = (id) => {
         console.log(id);
 
-        axios.post(`/api/admin/completed/${id}`).then((res)=>{
+        axios.post(`https://moto-hire-backend.onrender.com/api/admin/completed/${id}`).then((res)=>{
             console.log(res.data.data.message);
         })
         setRender(true)

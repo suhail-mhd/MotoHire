@@ -34,7 +34,7 @@ function Map() {
   const longitude = useSelector((state) => state.lng);
 
   useEffect(() => {
-    axios.get('/api/user/mapBoxToken').then((res) => {
+    axios.get('https://moto-hire-backend.onrender.com/api/user/mapBoxToken').then((res) => {
       setMapToken(res.data.Token);
       setRender(true);
     });

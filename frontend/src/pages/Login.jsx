@@ -85,7 +85,7 @@ export default function SignIn() {
       };
 
       const { data, status } = await axios.post(
-        "/api/user/login",
+        "https://moto-hire-backend.onrender.com/api/user/login",
         {
           email,
           password,
@@ -116,7 +116,7 @@ export default function SignIn() {
         },
       };
 
-      axios.post("/api/user/otpnumber", { mobNumber }, config).then((res) => {
+      axios.post("https://moto-hire-backend.onrender.com/api/user/otpnumber", { mobNumber }, config).then((res) => {
         console.log(res);
       });
 
@@ -142,7 +142,7 @@ export default function SignIn() {
       };
 
       axios
-        .post("/api/user/otpvalidate", { otp, mobNumber }, config)
+        .post("https://moto-hire-backend.onrender.com/api/user/otpvalidate", { otp, mobNumber }, config)
         .then((res) => {
           // console.log(res.data.res.status);
           // console.log(res.data);

@@ -68,7 +68,7 @@ function CouponManagement() {
 
     try {
       axios
-        .post(`/api/admin/couponManagement`, {
+        .post(`https://moto-hire-backend.onrender.com/api/admin/couponManagement`, {
           couponName,
           discount,
           CouponCode,
@@ -86,7 +86,7 @@ function CouponManagement() {
 
   const getCoupon = () => {
     try {
-      axios.get("/api/admin/getCoupon").then((res) => {
+      axios.get("https://moto-hire-backend.onrender.com/api/admin/getCoupon").then((res) => {
         // console.log(res);
         setShowCoupon(res.data.data);
       });
@@ -99,7 +99,7 @@ function CouponManagement() {
     console.log(id);
 
     try {
-      axios.post(`/api/admin/deleteCoupon/${deleteId}`).then((res) => {
+      axios.post(`https://moto-hire-backend.onrender.com/api/admin/deleteCoupon/${deleteId}`).then((res) => {
         // console.log(res.data.message);
         SetSnackMessage(res.data.message);
       });

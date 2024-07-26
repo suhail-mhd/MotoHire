@@ -22,7 +22,7 @@ console.log(maxUsedCar);
 
     const totalUserData = () => {
       try {
-        axios.get('/api/admin/userManagement').then((res)=>{
+        axios.get('https://moto-hire-backend.onrender.com/api/admin/userManagement').then((res)=>{
           // console.log(res.data);
           setTotalUser(res.data)
         })
@@ -33,7 +33,7 @@ console.log(maxUsedCar);
 
     const carData = () => {
       try {
-        axios.get('/api/user/getcarData').then((res)=>{
+        axios.get('https://moto-hire-backend.onrender.com/api/user/getcarData').then((res)=>{
           // console.log(res);
           setTotalCar(res.data.data)
         })
@@ -44,7 +44,7 @@ console.log(maxUsedCar);
 
     const revenue = () => {
       try {
-        axios.get('/api/admin/revenue').then((res)=>{
+        axios.get('https://moto-hire-backend.onrender.com/api/admin/revenue').then((res)=>{
           // console.log(res);
           setTotalRevenue(res.data.revenue[0].sum)
         })
@@ -57,7 +57,7 @@ console.log(maxUsedCar);
 
     const mostUsedCar = () =>{
       try {
-        axios.get('/api/admin/mostUsedCar').then((res)=>{
+        axios.get('https://moto-hire-backend.onrender.com/api/admin/mostUsedCar').then((res)=>{
           // console.log(res);
           setMaxUsedCar(res.data)
         })

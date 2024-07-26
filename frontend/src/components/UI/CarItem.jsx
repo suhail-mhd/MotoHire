@@ -75,7 +75,7 @@ function Cards() {
   const navigate = useNavigate();
 
   const GetCars = async () => {
-    const data = await axios.get("/api/user/getcarData").then((res) => {
+    const data = await axios.get("https://moto-hire-backend.onrender.com/api/user/getcarData").then((res) => {
       // console.log(res.data.data)
 
       setCarsData(res.data.data);
@@ -101,7 +101,7 @@ function Cards() {
     // console.log(searchText);
 
     try {
-      axios.post("/api/user/search", { searchText }).then((res) => {
+      axios.post("https://moto-hire-backend.onrender.com/api/user/search", { searchText }).then((res) => {
         // console.log(res.data.data);
         setSearchData(res.data.data);
       });
@@ -113,7 +113,7 @@ function Cards() {
 
   const lowToHigh = () => {
     try {
-      axios.get("/api/user/lowtohigh").then((res) => {
+      axios.get("https://moto-hire-backend.onrender.com/api/user/lowtohigh").then((res) => {
         // console.log(res);
         setLowToHighData(res.data.sort);
       });
@@ -126,7 +126,7 @@ function Cards() {
 
   const highToLow = () => {
     try {
-      axios.get("/api/user/hightolow").then((res) => {
+      axios.get("https://moto-hire-backend.onrender.com/api/user/hightolow").then((res) => {
         //  console.log(res);
         setHighToLowData(res.data.sorttwo);
       });

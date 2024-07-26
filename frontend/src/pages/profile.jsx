@@ -82,7 +82,7 @@ function Profile(id) {
     e.preventDefault();
     if (password === confirmPassword) {
       axios
-        .patch(`/api/user/passwordreset/${userid.id}`, { password })
+        .patch(`https://moto-hire-backend.onrender.com/api/user/passwordreset/${userid.id}`, { password })
         .then((res) => {
           console.log(res.data.message);
           setUpdateRes(res.data.message);
@@ -107,7 +107,7 @@ function Profile(id) {
 
   const userData = () => {
     try {
-      axios.get(`/api/user/getprofileuserdata/${userid.id}`).then((res) => {
+      axios.get(`https://moto-hire-backend.onrender.com/api/user/getprofileuserdata/${userid.id}`).then((res) => {
         setUserDataValue(res.data.user);
         // console.log(res.data);
         setName(res.data.user.name);
@@ -129,7 +129,7 @@ function Profile(id) {
 
     try {
       axios
-        .patch(`/api/user/userupdate/${userid.id}`, {
+        .patch(`https://moto-hire-backend.onrender.com/api/user/userupdate/${userid.id}`, {
           name,
           email,
           phone,

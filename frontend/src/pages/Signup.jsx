@@ -75,7 +75,7 @@ export default function SignUp() {
         };
 
         const { data, status } = await axios.post(
-          "/api/user/signup",
+          "https://moto-hire-backend.onrender.com/api/user/signup",
           {
             name,
             email,

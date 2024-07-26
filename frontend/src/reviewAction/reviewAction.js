@@ -25,7 +25,7 @@ import axios from 'axios'
         },
       }
   
-      await axios.post(`/api/user/${productId}/reviews`, review, config)
+      await axios.post(`https://moto-hire-backend.onrender.com/api/user/${productId}/reviews`, review, config)
   
       dispatch({
         type: PRODUCT_CREATE_REVIEW_SUCCESS,

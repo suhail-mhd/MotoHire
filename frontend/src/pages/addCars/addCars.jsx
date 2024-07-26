@@ -73,7 +73,7 @@ function AddCars() {
       };
 
       const data = await axios.post(
-        "/api/admin/addCar",
+        "https://moto-hire-backend.onrender.com/api/admin/addCar",
         {
           brand,
           model,

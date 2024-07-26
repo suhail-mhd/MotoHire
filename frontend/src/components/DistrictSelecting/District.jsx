@@ -42,7 +42,7 @@ function District() {
 
     try {
       axios
-        .post("/api/user/searchdistrict", { place: dis })
+        .post("https://moto-hire-backend.onrender.com/api/user/searchdistrict", { place: dis })
         .then((res) => {
           // console.log(res.data.data);
           setDisSortedData(res.data.data);
@@ -53,7 +53,7 @@ function District() {
 
   const getDistict = () => {
     try {
-      axios.get("/api/user/getdistrict").then((res) => {
+      axios.get("https://moto-hire-backend.onrender.com/api/user/getdistrict").then((res) => {
         SetDistrictData(res.data.Getdistrict);
       });
     } catch (error) {

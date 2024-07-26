@@ -54,7 +54,7 @@ export default function AdminLogin() {
                }
              }
     
-             const {data , status} = await axios.post('/api/admin/adminlogin',{
+             const {data , status} = await axios.post('https://moto-hire-backend.onrender.com/api/admin/adminlogin',{
                email,password
              },config)
     

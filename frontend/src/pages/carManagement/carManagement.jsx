@@ -111,7 +111,7 @@ function CarManagement() {
   const carManagement = async () => {
     try {
       const data = await axios
-        .get("/api/user/getcarData")
+        .get("https://moto-hire-backend.onrender.com/api/user/getcarData")
         .then((res) => {
           adminCarManagement(res.data.data);
         });
@@ -143,7 +143,7 @@ function CarManagement() {
       };
 
       await axios.post(
-        "/api/admin/deletecar",
+        "https://moto-hire-backend.onrender.com/api/admin/deletecar",
         { deleteId },
         config
       );
@@ -169,7 +169,7 @@ function CarManagement() {
       };
 
       await axios
-        .get(`/api/admin/getallcardetails/${id}`)
+        .get(`https://moto-hire-backend.onrender.com/api/admin/getallcardetails/${id}`)
         .then((res) => {
           // console.log(res.data.brand);
           SetBrand(res.data.brand);
@@ -205,7 +205,7 @@ function CarManagement() {
 
       const data = await axios
         .patch(
-          "/api/admin/updatecardata",
+          "https://moto-hire-backend.onrender.com/api/admin/updatecardata",
           {
             id,
             brand,

@@ -63,7 +63,7 @@ const CarDetails = ({ match }) => {
 
   const gettingData = () => {
     try {
-      axios.post(`/api/user/GetSingleCar/${id2.id}`).then((response) => {
+      axios.post(`https://moto-hire-backend.onrender.com/api/user/GetSingleCar/${id2.id}`).then((response) => {
         // console.log(response.data);
         setCarData(response.data);
         setDummyAmount(response.data.price);
@@ -125,7 +125,7 @@ const CarDetails = ({ match }) => {
     });
 
   const wishlist = () => {
-    axios.post(`/api/user/dataTowishlist/${id2.id}`, { USERID }).then((res) => {
+    axios.post(`https://moto-hire-backend.onrender.com/api/user/dataTowishlist/${id2.id}`, { USERID }).then((res) => {
       // console.log(res);
 
       setUpdate(true);
@@ -134,7 +134,7 @@ const CarDetails = ({ match }) => {
 
   const getwishlistdata = () => {
     try {
-      axios.post("/api/user/getdatafromwishlist", { USERID }).then((res) => {
+      axios.post("https://moto-hire-backend.onrender.com/api/user/getdatafromwishlist", { USERID }).then((res) => {
         console.log(res.data.wishlist);
         setWishListData(res.data.wishlist);
       });
@@ -144,7 +144,7 @@ const CarDetails = ({ match }) => {
   };
 
   const removefromwishlist = async () => {
-    const data = await axios.post(`/api/user/removefromwishlist/${id2.id}`, {
+    const data = await axios.post(`https://moto-hire-backend.onrender.com/api/user/removefromwishlist/${id2.id}`, {
       USERID,
     });
     // console.log(data.data);
@@ -154,7 +154,7 @@ const CarDetails = ({ match }) => {
   const HandleBookNow = (id) => {
     // console.log(id);
     try {
-      axios.post(`/api/user/checkdate`, { val, val2, id }).then((res) => {
+      axios.post(`https://moto-hire-backend.onrender.com/api/user/checkdate`, { val, val2, id }).then((res) => {
         // console.log(res);
         SetDateAvailability(res.data.message);
         if (res.data.message === "Car Not Available For this Time Period") {
