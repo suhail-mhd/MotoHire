@@ -3,7 +3,7 @@ import React from "react";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
-import footLogo from "../../assets/all-images/MOTOHIRE 1.png";
+import footLogo from "../../assets/all-images/Motohire white.png";
 
 const quickLinks = [
   {
@@ -35,13 +35,11 @@ const Footer = (props) => {
             <div className="logo footer__logo">
               <h1>
                 <Link to="/home" className=" d-flex align-items-center gap-2">
-                <img src={footLogo} style={{height:50}} alt='MotoHire Logo' />
+                <img src={footLogo} style={{ width: "150px", margin:0, padding:0
+                      }} alt='MotoHire Logo' />
                 </Link>
               </h1>
-            </div>
-            <br />
-            <div>
-            <p className="footer__logo-content">
+              <p className="footer__logo-content">
             Are you looking to rent a car in Kerala? Then, you have come to the right place. MotoHire, the premium rental services provides car booking in Kochi and other locations of the state. With attractive prices, our car rental services remove those frustrating transport woes from the minds of NRIs and tourists.
             </p>
             </div>

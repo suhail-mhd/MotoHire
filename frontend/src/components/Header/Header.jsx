@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import mainLogo from "../../assets/all-images/M.png";
+import mainLogo from "../../assets/all-images/Motohire black.png";
 
 const style = {
   position: "absolute",
@@ -257,7 +257,9 @@ const Header = (props) => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <img
                     src={mainLogo}
-                    style={{ width: 200 }}
+                    style={{     width: "150px",
+                      position: "absolute",
+                      marginTop: "4rem" }}
                     alt="MOTOHIRE Logo"
                   />
                 </Link>
