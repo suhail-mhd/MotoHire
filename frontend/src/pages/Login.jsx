@@ -246,7 +246,7 @@ export default function SignIn() {
               {errors.password && errors.password.message}
             </p>
 
-            <Typography style={{ textAlign: "center" }}>
+            <Typography style={{ textAlign: "center", display:"none" }}>
               <Button onClick={handleOpen}>Login With Otp</Button>
             </Typography>
             <Button
@@ -258,14 +258,19 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+              Don't have an account?
+                <Link href="/signup" variant="body2" style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
+                  }}>
+                   Sign Up
                 </Link>
               </Grid>
             </Grid>

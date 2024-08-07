@@ -350,10 +350,23 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid
+              container
+              justifyContent="flex-end"
+              style={{ marginTop: "1rem" }}
+            >
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                Already have an account?
+                <Link
+                  href="/login"
+                  variant="body2"
+                  style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Sign in
                 </Link>
               </Grid>
             </Grid>
