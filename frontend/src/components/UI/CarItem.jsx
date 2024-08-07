@@ -196,7 +196,7 @@ function Cards() {
 
           <Grid item sm={12} xs={12} md={6} lg={4} xl={4}>
             <Box sx={{ display: "flex" }}>
-              <Box>
+              <Box sx={{ marginLeft: "-1.5rem" }}>
                 <TextField
                   id="outlined-basic"
                   label="Search Cars"
@@ -213,7 +213,7 @@ function Cards() {
                   }}
                 />
               </Box>
-              <Box sx={{ marginLeft: 2 }}>
+              <Box sx={{ marginLeft: 1 }}>
                 {/* <Button
                   variant="contained"
                   sx={{ marginTop: 1 }}

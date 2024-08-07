@@ -185,7 +185,7 @@ const Header = (props) => {
                   }}
                 >
                   {" "}
-                  Hello, {loc.name}
+                  Welcome {loc.name}
                 </h6>
               </Col>
             ) : (
@@ -258,11 +258,9 @@ const Header = (props) => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <img
                     src={mainLogo}
-                    style={{
-                      width: "150px",
+                    style={{     width: "150px",
                       position: "absolute",
-                      marginTop: "4rem",
-                    }}
+                      marginTop: "4rem" }}
                     alt="MOTOHIRE Logo"
                   />
                 </Link>
@@ -334,6 +332,7 @@ const Header = (props) => {
                 <div className="mobile__header__top">
                   <Container>
                     <Row>
+
                       {loc && !props.admin ? (
                         <Col className="ddd">
                           <MenuItem
@@ -369,62 +368,59 @@ const Header = (props) => {
             </div>
           </div>
           <div className="logo-mobile">
-            <Link
-              to="/home"
-              className=" d-flex align-items-center gap-2 justify-content-center"
-            >
-              <img
-                src={whiteLogo}
-                style={{
-                  width: "100px",
-                  marginTop: "-30px",
-                  position: "absolute",
-                }}
-                alt="MOTOHIRE Logo"
-              />
-            </Link>
-          </div>
+                <Link to="/home" className=" d-flex align-items-center gap-2 justify-content-center">
+                  <img
+                    src={whiteLogo}
+                    style={{     width: "100px",
+                      marginTop:"-30px",
+                      position: "absolute" }}
+                    alt="MOTOHIRE Logo"
+                  />
+                </Link>
+              </div>
           <div className="authentication-tabs">
-            {loc && !props.admin ? (
-              <Col className="ddd">
-                <div className="d-flex align-items-center justify-content-end">
-                  
-                  <h6
-                    style={{
-                      color: "white",
-                      // marginTop: "10px",
-                      // marginLeft: "1rem",
-                    }}
-                  >
-                    {" "}
-                    Hello, {loc.name}
-                  </h6>
-                  <MenuItem onClick={handleOpen} className="gap-1" style={{color:"white", marginTop:"-10px"}}>
-                    <i class="ri-logout-circle-line"></i> Logout
-                  </MenuItem>
-                </div>
-              </Col>
-            ) : (
-              <Col lg="6" md="6" sm="6">
-                <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                  {/* <Link
+          {loc && !props.admin ? (
+                        <Col className="ddd">
+                        
+                          <div className="d-flex align-items-center justify-content-end">
+                          <MenuItem onClick={handleOpen} className="gap-1" style={{color:"white", fontSize:"12px", marginTop: "-10px"}}>
+                            <i class="ri-logout-circle-line"></i> Logout
+                          </MenuItem>
+                          {/* <h6
+                            style={{
+                              color: "white",
+                              marginTop: "10px",
+                              marginLeft: "1rem",
+                            }}
+                          >
+                            {" "}
+                            Welcome {loc.name}
+                          </h6> */}
+                          </div>
+                        </Col>
+                      ) : (
+                        <Col lg="6" md="6" sm="6">
+                          <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+                            {/* <Link
                               to="/login"
                               className=" d-flex align-items-center gap-1"
                             >
                               <i class="ri-login-circle-line"></i> Login
                             </Link> */}
 
-                  <Link
-                    to="/signup"
-                    className=" d-flex align-items-center gap-1"
-                  >
-                    <i class="ri-user-line"></i> Register
-                  </Link>
-                </div>
-              </Col>
-            )}
+                            <Link
+                              to="/signup"
+                              className=" d-flex align-items-center gap-1"
+                              style={{fontSize:"12px"}}
+                            >
+                              <i class="ri-user-line"></i> Register
+                            </Link>
+                          </div>
+                        </Col>
+                      )}
           </div>
         </Container>
+        
       </div>
     </header>
   );
