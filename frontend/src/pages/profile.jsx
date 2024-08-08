@@ -13,6 +13,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import InputLabel from "@mui/material/InputLabel";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 
 const style = {
   position: "absolute",
@@ -25,6 +30,32 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+};
+
+const style1 = {
+  backgroundColor: "orange",
+  padding: "4px",
+  borderRadius: "50%",
+  position: "absolute",
+  marginTop: "4.5rem",
+  marginLeft: "-1.5rem",
+  color: "#f4f4f4",
+  cursor: "pointer",
+};
+
+const styleThree = {
+  backgroundColor: "orange",
+  borderRadius: "20px",
+  marginTop: 25,
+  paddingLeft: "50px",
+  paddingRight: "50px",
+  textTransform: "none",
+};
+
+const style4 = {
+  width: "100px",
+  height: "100px",
+  borderRadius: "100%",
 };
 
 function Profile(id) {
@@ -82,7 +113,10 @@ function Profile(id) {
     e.preventDefault();
     if (password === confirmPassword) {
       axios
-        .patch(`https://moto-hire-backend.onrender.com/api/user/passwordreset/${userid.id}`, { password })
+        .patch(
+          `https://moto-hire-backend.onrender.com/api/user/passwordreset/${userid.id}`,
+          { password }
+        )
         .then((res) => {
           console.log(res.data.message);
           setUpdateRes(res.data.message);
@@ -107,17 +141,21 @@ function Profile(id) {
 
   const userData = () => {
     try {
-      axios.get(`https://moto-hire-backend.onrender.com/api/user/getprofileuserdata/${userid.id}`).then((res) => {
-        setUserDataValue(res.data.user);
-        // console.log(res.data);
-        setName(res.data.user.name);
-        setEmail(res.data.user.email);
-        setPhone(res.data.user.phone);
-        setGender(res.data.user.gender);
-        setDistrict(res.data.user.district);
-        setAge(res.data.user.age);
-        setAddress(res.data.user.address);
-      });
+      axios
+        .get(
+          `https://moto-hire-backend.onrender.com/api/user/getprofileuserdata/${userid.id}`
+        )
+        .then((res) => {
+          setUserDataValue(res.data.user);
+          // console.log(res.data);
+          setName(res.data.user.name);
+          setEmail(res.data.user.email);
+          setPhone(res.data.user.phone);
+          setGender(res.data.user.gender);
+          setDistrict(res.data.user.district);
+          setAge(res.data.user.age);
+          setAddress(res.data.user.address);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -129,15 +167,18 @@ function Profile(id) {
 
     try {
       axios
-        .patch(`https://moto-hire-backend.onrender.com/api/user/userupdate/${userid.id}`, {
-          name,
-          email,
-          phone,
-          gender,
-          district,
-          age,
-          address,
-        })
+        .patch(
+          `https://moto-hire-backend.onrender.com/api/user/userupdate/${userid.id}`,
+          {
+            name,
+            email,
+            phone,
+            gender,
+            district,
+            age,
+            address,
+          }
+        )
         .then((res) => {
           // console.log(res.data.message);
           setUpdateRes(res.data.message);
@@ -165,186 +206,136 @@ function Profile(id) {
         message={updateRes}
         action={action}
       />
-      <Container fixed>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            {userDataValue.gender === "Male" ? (
-              <Stack sx={{ alignItems: "center", marginTop: 7 }}>
+      <Grid container style={{ marginTop: "-3.5rem" }}>
+        <Grid item xs={12} sm={12} lg={6} md={6}>
+          <Card
+            sx={{ maxWidth: 345 }}
+            style={{
+              position: "relative",
+              marginLeft: "15rem",
+              marginBottom: "2rem",
+              width: 250,
+              height: 400,
+              borderRadius: "5px",
+              boxShadow:
+                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+              padding: "10px 0",
+            }}
+          >
+            
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={12} lg={6} md={6}>
+          <Card
+            style={{
+              position: "relative",
+              marginLeft: "-8rem",
+              marginBottom: "2rem",
+              width: 750,
+              height: 400,
+              borderRadius: "5px",
+              boxShadow:
+                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+              padding: "30px",
+            }}
+          >
+            <CardContent>
+              <div>
+                {userDataValue.gender === "Male" ? (
+              <Stack>
                 <Avatar
-                  sx={{ width: 300, height: 300 }}
-                  src="https://st4.depositphotos.com/11634452/41441/v/600/depositphotos_414416680-stock-illustration-picture-profile-icon-male-icon.jpg"
+                  sx={{ width: 100, height: 100 }}
+                  src="https://i.pngimg.me/thumb/f/720/1d714a7743.jpg"
                 />
               </Stack>
             ) : (
-              <Stack sx={{ alignItems: "center", marginTop: 7 }}>
+              <Stack>
                 <Avatar
-                  sx={{ width: 300, height: 300 }}
-                  src="https://www.soniaworkmanlifecoaching.com/wp-content/uploads/bb-plugin/cache/anonymous-profile-square.jpg"
+                  sx={{ width: 100, height: 100 }}
+                  src="https://i.pngimg.me/thumb/f/720/2c1660d631.jpg"
                 />
               </Stack>
             )}
-          </Grid>
-        </Grid>
-        <Box>
-          <Grid container spacing={1}>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: 50,
-                  width: "100%",
+              </div>
+              <Typography
+                gutterBottom
+                variant="p"
+                component="div"
+                style={{
+                  fontSize: "14px",
+                  marginTop: "-7px",
+                  color: "#858585",
                 }}
               >
-                <Typography variant="h5" component="h5" margin="auto">
-                  Name: {userDataValue.name}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: "auto",
-                  minHeight: 50,
-                  width: "100%",
-                }}
-                elevation={3}
-              >
-                <Typography variant="h5" component="h5" margin="auto">
-                  Email: {userDataValue.email}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: 50,
-                  width: "100%",
-                }}
-                elevation={3}
-              >
-                <Typography variant="h5" component="h5" margin="auto">
-                  Phone: {userDataValue.phone}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: 50,
-                  width: "100%",
-                }}
-                elevation={3}
-              >
-                <Typography variant="h5" component="h5" margin="auto">
-                  Age: {userDataValue.age}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: 50,
-                  width: "100%",
-                }}
-                elevation={3}
-              >
-                <Typography variant="h5" component="h5" margin="auto">
-                  Gender: {userDataValue.gender}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-              <Paper
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: 5,
-                  height: 50,
-                  width: "100%",
-                }}
-                elevation={3}
-              >
-                <Typography variant="h5" component="h5" margin="auto">
-                  District: {userDataValue.district}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item sm={12} xs={12} md={12} lg={12} xl={12}>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <Paper
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: 5,
-                    height: "auto",
-                    width: "100%",
-                  }}
-                  elevation={3}
-                >
-                  <Box marginTop={2}>
-                    <Typography
-                      variant="h5"
-                      component="h5"
-                      margin="auto"
-                      sx={{ textAlign: "center" }}
-                    >
-                      Address:
+                {userDataValue.name}
+              </Typography>
+            </CardContent>
+            <Box>
+              <Grid container spacing={1}>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      Name: {userDataValue.name}
                     </Typography>
-                    <Typography
-                      variant="h5"
-                      component="h5"
-                      margin="auto"
-                      sx={{ margin: 2 }}
-                    >
-                      {userDataValue.address}
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      Email: {userDataValue.email}
                     </Typography>
-                  </Box>
-                </Paper>
-              </Box>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      Phone: {userDataValue.phone}
+                    </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      Age: {userDataValue.age}
+                    </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      Gender: {userDataValue.gender}
+                    </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                      District: {userDataValue.district}
+                    </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                    <Typography margin="auto">
+                    Address: {userDataValue.address}
+                    </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+            <Grid container sx={{ justifyContent: "center", display: "flex" }}>
+              <Grid item>
+                <Box marginTop={4}>
+                  <Button
+                    variant="contained"
+                    sx={{ width: 200, height: 50 }}
+                    onClick={handleOpen}
+                  >
+                    Edit
+                  </Button>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box marginTop={4} marginLeft={2}>
+                  <Button
+                    variant="contained"
+                    sx={{ width: 200, height: 50 }}
+                    onClick={HandlePassOpen}
+                  >
+                    Reset Password
+                  </Button>
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-        <Grid container sx={{ justifyContent: "center", display: "flex" }}>
-          <Grid item>
-            <Box marginTop={4}>
-              <Button
-                variant="contained"
-                sx={{ width: 200, height: 50 }}
-                onClick={handleOpen}
-              >
-                Edit
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box marginTop={4} marginLeft={2}>
-              <Button
-                variant="contained"
-                sx={{ width: 200, height: 50 }}
-                onClick={HandlePassOpen}
-              >
-                Reset Password
-              </Button>
-            </Box>
-          </Grid>
+          </Card>
         </Grid>
-        <br />
-        <br />
-      </Container>
+      </Grid>
       <Grid container>
         <Grid item xs={12}>
           <Modal
