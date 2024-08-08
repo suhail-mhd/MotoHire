@@ -185,7 +185,7 @@ const Header = (props) => {
                   }}
                 >
                   {" "}
-                  Welcome {loc.name}
+                  Hello, {loc.name}
                 </h6>
               </Col>
             ) : (
@@ -211,7 +211,7 @@ const Header = (props) => {
             <div style={{ display: "flex", justifyContent: "right" }}>
               {props.admin ? (
                 <div style={{ marginRight: 10, marginTop: 14 }}>
-                  {/* <h6> Welcome Admin</h6> */}
+                  {/* <h6> Hello, Admin</h6> */}
                   {/* <AnimatedText
               type="words" // animate words or chars
               animation={{
@@ -229,7 +229,7 @@ const Header = (props) => {
               threshold={0.1}
               rootMargin="20%"
             > */}
-                  Welcome Admin
+                  Hello, Admin
                   {/* </AnimatedText> */}
                 </div>
               ) : null}
@@ -258,9 +258,11 @@ const Header = (props) => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <img
                     src={mainLogo}
-                    style={{     width: "150px",
+                    style={{
+                      width: "150px",
                       position: "absolute",
-                      marginTop: "4rem" }}
+                      marginTop: "4rem",
+                    }}
                     alt="MOTOHIRE Logo"
                   />
                 </Link>
@@ -332,34 +334,68 @@ const Header = (props) => {
                 <div className="mobile__header__top">
                   <Container>
                     <Row>
-
                       {loc && !props.admin ? (
                         <Col className="ddd">
-                          <MenuItem
-                            onClick={() => navigate(`/profile/${userId}`)}
-                            className="gap-1"
+                          <div
+                            className="d-flex align-items-center justify-content-center"
+                            style={{
+                              flexDirection: "column",
+                              marginLeft: "-3.5rem",
+                            }}
                           >
-                            Profile
-                          </MenuItem>
-                          <MenuItem
-                            onClick={() => navigate("/bookinghistory")}
-                            className="gap-1"
-                          >
-                            Booking History
-                          </MenuItem>
-                          <div style={{ marginRight: 10 }}>
                             <MenuItem
-                              sx={{ color: "white" }}
-                              onClick={() => navigate("/wishlist")}
+                              onClick={() => navigate(`/profile/${userId}`)}
                               className="gap-1"
                             >
-                              {" "}
-                              Wishlist
-                            </MenuItem>{" "}
+                              Profile
+                            </MenuItem>
+                            <MenuItem
+                              onClick={() => navigate("/bookinghistory")}
+                              className="gap-1"
+                            >
+                              Booking History
+                            </MenuItem>
+                            <div style={{ marginRight: 10 }}>
+                              <MenuItem
+                                sx={{ color: "white" }}
+                                onClick={() => navigate("/wishlist")}
+                                className="gap-1"
+                              >
+                                {" "}
+                                Wishlist
+                              </MenuItem>{" "}
+                            </div>
+                            <div className="align-items-center justify-content-end">
+                              <MenuItem onClick={handleOpen} className="gap-1">
+                                <i class="ri-logout-circle-line"></i> Logout
+                              </MenuItem>
+                            </div>
                           </div>
                         </Col>
                       ) : (
-                        ""
+                        <Col lg="6" md="6" sm="6">
+                          <div
+                            className="header__top__right d-flex align-items-center justify-content-center gap-3"
+                            style={{
+                              flexDirection: "column",
+                              marginLeft: "-3.5rem",
+                            }}
+                          >
+                            <Link
+                              to="/login"
+                              className=" d-flex align-items-center gap-1"
+                            >
+                              <i class="ri-login-circle-line"></i> Login
+                            </Link>
+
+                            <Link
+                              to="/signup"
+                              className=" d-flex align-items-center gap-1"
+                            >
+                              <i class="ri-user-line"></i> Register
+                            </Link>
+                          </div>
+                        </Col>
                       )}
                     </Row>
                   </Container>
@@ -368,59 +404,37 @@ const Header = (props) => {
             </div>
           </div>
           <div className="logo-mobile">
-                <Link to="/home" className=" d-flex align-items-center gap-2 justify-content-center">
-                  <img
-                    src={whiteLogo}
-                    style={{     width: "100px",
-                      marginTop:"-30px",
-                      position: "absolute" }}
-                    alt="MOTOHIRE Logo"
-                  />
-                </Link>
-              </div>
-          <div className="authentication-tabs">
-          {loc && !props.admin ? (
-                        <Col className="ddd">
-                        
-                          <div className="d-flex align-items-center justify-content-end">
-                          <MenuItem onClick={handleOpen} className="gap-1" style={{color:"white", fontSize:"12px", marginTop: "-10px"}}>
-                            <i class="ri-logout-circle-line"></i> Logout
-                          </MenuItem>
-                          {/* <h6
-                            style={{
-                              color: "white",
-                              marginTop: "10px",
-                              marginLeft: "1rem",
-                            }}
-                          >
-                            {" "}
-                            Welcome {loc.name}
-                          </h6> */}
-                          </div>
-                        </Col>
-                      ) : (
-                        <Col lg="6" md="6" sm="6">
-                          <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                            {/* <Link
-                              to="/login"
-                              className=" d-flex align-items-center gap-1"
-                            >
-                              <i class="ri-login-circle-line"></i> Login
-                            </Link> */}
-
-                            <Link
-                              to="/signup"
-                              className=" d-flex align-items-center gap-1"
-                              style={{fontSize:"12px"}}
-                            >
-                              <i class="ri-user-line"></i> Register
-                            </Link>
-                          </div>
-                        </Col>
-                      )}
+            <Link
+              to="/home"
+              className=" d-flex align-items-center gap-2 justify-content-center"
+            >
+              <img
+                src={whiteLogo}
+                style={{
+                  width: "100px",
+                  marginTop: "-30px",
+                  position: "absolute",
+                }}
+                alt="MOTOHIRE Logo"
+              />
+            </Link>
           </div>
+          {loc && !props.admin ? (
+            <h6
+              style={{
+                color: "white",
+                marginTop: "-26px",
+                marginLeft: "18rem",
+              }}
+              className="userDisplay"
+            >
+              {" "}
+              Hello, {loc.name}
+            </h6>
+          ) : (
+            ""
+          )}
         </Container>
-        
       </div>
     </header>
   );
