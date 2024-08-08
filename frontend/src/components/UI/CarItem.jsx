@@ -280,7 +280,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ₹ {obj.price}/day
+                          ₹{obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -301,7 +301,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ₹ {obj.prevAmount}
+                            ₹{obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -376,7 +376,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ₹ {obj.price}/day
+                          ₹{obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -397,7 +397,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ₹ {obj.prevAmount}
+                            ₹{obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -472,7 +472,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ₹ {obj.price}/day
+                          ₹{obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -493,7 +493,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ₹ {obj.prevAmount}
+                            ₹{obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -568,7 +568,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ₹ {obj.price}/day
+                          ₹{obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -589,7 +589,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ₹ {obj.prevAmount}
+                            ₹{obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}
@@ -664,7 +664,7 @@ function Cards() {
                           component="div"
                           style={{ fontSize: "15px" }}
                         >
-                          ₹ {obj.price}/day
+                          ₹{obj.price}/day
                         </Typography>
                       </div>
                       {obj.OfferStatus ? (
@@ -685,7 +685,7 @@ function Cards() {
                             }}
                             variant="subtitle2"
                           >
-                            ₹ {obj.prevAmount}
+                            ₹{obj.prevAmount}
                           </Typography>
                         </Box>
                       ) : null}

@@ -234,7 +234,7 @@ const CarDetails = ({ match }) => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    ₹ {carData.price}.00 / Day
+                    ₹{carData.price}.00 / Day
                   </h6>
 
                   <span className=" d-flex align-items-center">

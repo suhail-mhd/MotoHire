@@ -193,7 +193,7 @@ function OfferManagement() {
              <TableCell component="th" scope="row"  >
               {obj.OfferName}
               </TableCell>
-              <TableCell align="center">₹ {obj.OfferPrice}</TableCell>
+              <TableCell align="center">₹{obj.OfferPrice}</TableCell>
               <TableCell align="center">{obj.District}</TableCell>
               <TableCell align="center"><Button style={{color:'red'}} onClick={()=>deleteData(setDeleteId(`${obj._id}`),setDeleteDistrict(`${obj.District}`))} ><i class="ri-delete-bin-line"></i> </Button></TableCell>
                                 
