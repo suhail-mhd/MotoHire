@@ -423,7 +423,7 @@ const Header = (props) => {
             <h6
               style={{
                 color: "white",
-                marginTop: "-26px",
+                marginTop: "-30px",
                 marginLeft: "18rem",
               }}
               className="userDisplay"

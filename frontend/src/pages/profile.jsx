@@ -276,7 +276,7 @@ function Profile(id) {
             </CardContent>
             <Box>
               <Grid container spacing={1}>
-              <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
                   <Typography margin="auto">
                     Address: {userDataValue.address}
                   </Typography>
@@ -301,7 +301,6 @@ function Profile(id) {
                     District: {userDataValue.district}
                   </Typography>
                 </Grid>
-                
               </Grid>
             </Box>
             <Grid container sx={{ justifyContent: "end", display: "flex" }}>
