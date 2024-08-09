@@ -22,6 +22,7 @@ import { createProductReview } from "../reviewAction/reviewAction";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../reviewConstant/reviewConstant";
 import { FaStar } from "react-icons/fa";
 import Message from "../components/Message/Message";
+import LocationIcon from "../assets/all-images/location.png";
 
 const CarDetails = ({ match }) => {
   const [value, setValue] = React.useState([null, null]);
@@ -63,20 +64,24 @@ const CarDetails = ({ match }) => {
 
   const gettingData = () => {
     try {
-      axios.post(`https://moto-hire-backend.onrender.com/api/user/GetSingleCar/${id2.id}`).then((response) => {
-        // console.log(response.data);
-        setCarData(response.data);
-        setDummyAmount(response.data.price);
-        setCarID(response.data._id);
-        dispatch({
-          type: "lattitude",
-          payload: response.data.latitude,
+      axios
+        .post(
+          `https://moto-hire-backend.onrender.com/api/user/GetSingleCar/${id2.id}`
+        )
+        .then((response) => {
+          // console.log(response.data);
+          setCarData(response.data);
+          setDummyAmount(response.data.price);
+          setCarID(response.data._id);
+          dispatch({
+            type: "lattitude",
+            payload: response.data.latitude,
+          });
+          dispatch({
+            type: "longitude",
+            payload: response.data.longitude,
+          });
         });
-        dispatch({
-          type: "longitude",
-          payload: response.data.longitude,
-        });
-      });
     } catch (error) {
       console.log(error);
     }
@@ -125,28 +130,41 @@ const CarDetails = ({ match }) => {
     });
 
   const wishlist = () => {
-    axios.post(`https://moto-hire-backend.onrender.com/api/user/dataTowishlist/${id2.id}`, { USERID }).then((res) => {
-      // console.log(res);
+    axios
+      .post(
+        `https://moto-hire-backend.onrender.com/api/user/dataTowishlist/${id2.id}`,
+        { USERID }
+      )
+      .then((res) => {
+        // console.log(res);
 
-      setUpdate(true);
-    });
+        setUpdate(true);
+      });
   };
 
   const getwishlistdata = () => {
     try {
-      axios.post("https://moto-hire-backend.onrender.com/api/user/getdatafromwishlist", { USERID }).then((res) => {
-        console.log(res.data.wishlist);
-        setWishListData(res.data.wishlist);
-      });
+      axios
+        .post(
+          "https://moto-hire-backend.onrender.com/api/user/getdatafromwishlist",
+          { USERID }
+        )
+        .then((res) => {
+          console.log(res.data.wishlist);
+          setWishListData(res.data.wishlist);
+        });
     } catch (error) {
       console.log(error);
     }
   };
 
   const removefromwishlist = async () => {
-    const data = await axios.post(`https://moto-hire-backend.onrender.com/api/user/removefromwishlist/${id2.id}`, {
-      USERID,
-    });
+    const data = await axios.post(
+      `https://moto-hire-backend.onrender.com/api/user/removefromwishlist/${id2.id}`,
+      {
+        USERID,
+      }
+    );
     // console.log(data.data);
     setUpdate(false);
   };
@@ -154,15 +172,21 @@ const CarDetails = ({ match }) => {
   const HandleBookNow = (id) => {
     // console.log(id);
     try {
-      axios.post(`https://moto-hire-backend.onrender.com/api/user/checkdate`, { val, val2, id }).then((res) => {
-        // console.log(res);
-        SetDateAvailability(res.data.message);
-        if (res.data.message === "Car Not Available For this Time Period") {
-          SetDateAvailability(true);
-        } else {
-          navigate(`/booking/${id2.id}`);
-        }
-      });
+      axios
+        .post(`https://moto-hire-backend.onrender.com/api/user/checkdate`, {
+          val,
+          val2,
+          id,
+        })
+        .then((res) => {
+          // console.log(res);
+          SetDateAvailability(res.data.message);
+          if (res.data.message === "Car Not Available For this Time Period") {
+            SetDateAvailability(true);
+          } else {
+            navigate(`/booking/${id2.id}`);
+          }
+        });
     } catch (error) {
       console.log("triggered");
     }
@@ -297,206 +321,177 @@ const CarDetails = ({ match }) => {
               <ColoredLine color="black" />
             </Col>
 
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-              <Paper
-                elevation={0}
-                sx={{
-                  margin: "auto",
-                  height: "auto",
-                  marginTop: 5,
-                  background: "none",
-                }}
-              >
-                <Paper
-                  elevation={0}
-                  style={{ height: "auto", background: "none" }}
-                >
-                  <Grid
-                    className="grid_col"
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    lg={4}
-                    xl={4}
-                    style={{ display: "flex", marginBottom: "4rem" }}
-                  >
-                    <Col>
-                      <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-                        <Typography variant="h5" component="p">
-                          Choose Your Booking Date
-                        </Typography>
-                        <Box sx={{ display: "flex", paddingTop: 10 }}>
-                          <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DateRangePicker
-                              startText="Trip-starts"
-                              endText="Trip-ends"
-                              value={value}
-                              minDate={Date.now()}
-                              onChange={(newValue) => {
-                                setValue(newValue);
-                              }}
-                              renderInput={(startProps, endProps) => (
-                                <React.Fragment>
-                                  <TextField
-                                    {...startProps}
-                                    autoComplete="off"
-                                  />
-                                  <Box sx={{ mx: 2 }}> to </Box>
-                                  <TextField {...endProps} autoComplete="off" />
-                                </React.Fragment>
-                              )}
-                            />
-                          </LocalizationProvider>
-                        </Box>
-                        <Box
-                          sx={{ display: "flex", justifyContent: "center" }}
-                          paddingTop={1}
-                        >
-                          {bookStatus ? (
-                            <Chip
-                              color="error"
-                              label="Please Select A Date"
-                              variant="outlined"
-                            />
-                          ) : null}
-                          {DateAvailability ? (
-                            <Chip
-                              color="error"
-                              label="Car Is Not Available At This Time Period"
-                              variant="outlined"
-                            />
-                          ) : null}
-                        </Box>
-                      </Grid>
-                    </Col>
-                    <Col>
-                      <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-                        <Box
-                          sx={{
-                            justifyContent: "center",
-                            display: "flex",
-                            paddingTop: 3,
-                          }}
-                        >
-                          <Typography variant="h5" component="h5">
-                            PickUp Location
-                          </Typography>
-                        </Box>
-
-                        <Box>
-                          <Typography
-                            variant="h3 "
-                            component="h3"
-                            textAlign="center"
-                          >
-                            {carData.location}{" "}
-                            <Tooltip title="Direction from your location to cars">
-                              <LocationOnOutlinedIcon
-                                onClick={callingMap}
-                                style={{
-                                  fontSize: 40,
-                                  cursor: "pointer",
-                                  color: "green",
-                                }}
-                              />
-                            </Tooltip>
-                          </Typography>
-                        </Box>
-                      </Grid>
-                    </Col>
-
-                    <Col style={{ marginTop: "-4rem" }}>
-                      <br />
-                      <div style={{ justifyContent: "right", display: "flex" }}>
-                        <Typography variant="h5">
-                          <span style={{ fontWeight: "bold" }}>Total :</span>{" "}
-                          {count} Days
-                        </Typography>
-                      </div>
-                      <div style={{ justifyContent: "right", display: "flex" }}>
-                        <Typography variant="h5">
-                          <span style={{ fontWeight: "bold" }}>
-                            Total Amount :
-                          </span>{" "}
-                          {totalAmount}/-
-                        </Typography>
-                      </div>
-                      <div
-                        style={{
-                          justifyContent: "right",
-                          display: "flex",
-                          marginTop: 20,
+            <Row style={{ marginBottom: "4rem", marginTop: "2rem" }}>
+              <Col lg="4" md="4" sm="12" xs="12">
+                <div>
+                  <Typography variant="h5" component="p">
+                    Choose Your Booking Date
+                  </Typography>
+                  <Box sx={{ display: "flex", paddingTop: 3 }}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DateRangePicker
+                        startText="Trip-starts"
+                        endText="Trip-ends"
+                        value={value}
+                        minDate={Date.now()}
+                        onChange={(newValue) => {
+                          setValue(newValue);
                         }}
-                      >
-                        {user ? (
-                          <div>
-                            {totalAmount === 0 ? (
-                              // <Button
-                              //   variant="contained"
-                              //   onClick={() => setBookStatus(true)}
-                              // >
-                              //   Book Now
-                              // </Button>
-                              <button
-                                className="header__btn btn text-white"
-                                onClick={() => setBookStatus(true)}
-                              >
-                                Book Now
-                              </button>
-                            ) : (
-                              // <Button
-                              //   variant="contained"
-                              //   onClick={() => HandleBookNow(carData._id)}
-                              // >
-                              //   Book Now
-                              // </Button>
-                              <button
-                                className="header__btn btn text-white"
-                                onClick={() => HandleBookNow(carData._id)}
-                              >
-                                Book Now
-                              </button>
-                            )}
-                            {test ? (
-                              <Button
-                                variant="contained"
-                                color="error"
-                                sx={{ marginLeft: 3 }}
-                                onClick={removefromwishlist}
-                              >
-                                Remove from Wishlist{" "}
-                              </Button>
-                            ) : (
-                              <Button
-                                sx={{ marginLeft: 3 }}
-                                variant="contained"
-                                color="success"
-                                onClick={wishlist}
-                              >
-                                Add To Wishlist
-                              </Button>
-                            )}
-                          </div>
-                        ) : (
-                          <Typography
-                            variant="p"
-                            component="h6"
-                            sx={{
-                              color: "red",
-                              border: "2px solid red",
-                              padding: 1.5,
-                            }}
+                        renderInput={(startProps, endProps) => (
+                          <React.Fragment>
+                            <TextField {...startProps} autoComplete="off" />
+                            <Box sx={{ mx: 2 }}> to </Box>
+                            <TextField {...endProps} autoComplete="off" />
+                          </React.Fragment>
+                        )}
+                      />
+                    </LocalizationProvider>
+                  </Box>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "center" }}
+                    paddingTop={1}
+                  >
+                    {bookStatus ? (
+                      <Chip
+                        color="error"
+                        label="Please Select A Date"
+                        variant="outlined"
+                      />
+                    ) : null}
+                    {DateAvailability ? (
+                      <Chip
+                        color="error"
+                        label="Car Is Not Available At This Time Period"
+                        variant="outlined"
+                      />
+                    ) : null}
+                  </Box>
+                </div>
+              </Col>
+
+              <Col lg="4" md="4" sm="12" xs="12">
+                <div>
+                  <Box
+                    sx={{
+                      paddingTop: 3,
+                    }}
+                  >
+                    <Typography variant="h5" component="h5">
+                      Pickup Location
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      paddingBottom: 3,
+                    }}
+                  >
+                    <Typography variant="h5 " component="h5">
+                      {carData.location}{" "}
+                      <Tooltip title="Direction from your location to cars">
+                        <img
+                          src={LocationIcon}
+                          alt="location-icon"
+                          style={{
+                            width: 20,
+                            cursor: "pointer",
+                          }}
+                          onClick={callingMap}
+                        />
+                      </Tooltip>
+                    </Typography>
+                  </Box>
+                </div>
+              </Col>
+
+              <Col lg="4" md="4" sm="12" xs="12">
+                <div>
+                  <div style={{ justifyContent: "left", display: "flex" }}>
+                    <Typography variant="h5">
+                      <span style={{ fontWeight: "bold" }}>Total :</span>{" "}
+                      {count} Days
+                    </Typography>
+                  </div>
+                  <div style={{ justifyContent: "left", display: "flex" }}>
+                    <Typography variant="h5">
+                      <span style={{ fontWeight: "bold" }}>Total Amount :</span>{" "}
+                      {totalAmount}/-
+                    </Typography>
+                  </div>
+                  <div
+                    style={{
+                      justifyContent: "left",
+                      display: "flex",
+                      marginTop: 20,
+                    }}
+                  >
+                    {user ? (
+                      <div>
+                        {totalAmount === 0 ? (
+                          // <Button
+                          //   variant="contained"
+                          //   onClick={() => setBookStatus(true)}
+                          // >
+                          //   Book Now
+                          // </Button>
+                          <button
+                            className="header__btn btn text-white"
+                            onClick={() => setBookStatus(true)}
                           >
-                            Please Login To Book A Car!{" "}
-                            <SentimentDissatisfiedOutlinedIcon />
-                          </Typography>
+                            Book Now
+                          </button>
+                        ) : (
+                          // <Button
+                          //   variant="contained"
+                          //   onClick={() => HandleBookNow(carData._id)}
+                          // >
+                          //   Book Now
+                          // </Button>
+                          <button
+                            className="header__btn btn text-white"
+                            onClick={() => HandleBookNow(carData._id)}
+                          >
+                            Book Now
+                          </button>
+                        )}
+                        {test ? (
+                          <Button
+                            variant="contained"
+                            color="error"
+                            sx={{ marginLeft: 3 }}
+                            onClick={removefromwishlist}
+                          >
+                            Remove from Wishlist{" "}
+                          </Button>
+                        ) : (
+                          <Button
+                            sx={{ marginLeft: 3 }}
+                            variant="contained"
+                            color="success"
+                            onClick={wishlist}
+                          >
+                            Add To Wishlist
+                          </Button>
                         )}
                       </div>
-                    </Col>
-                  </Grid>
-                </Paper>
-              </Paper>
-            </Grid>
+                    ) : (
+                      <Typography
+                        variant="p"
+                        component="h6"
+                        sx={{
+                          color: "red",
+                          border: "2px solid red",
+                          padding: 1.5,
+                        }}
+                      >
+                        Please Login To Book A Car!{" "}
+                        <SentimentDissatisfiedOutlinedIcon />
+                      </Typography>
+                    )}
+                  </div>
+                </div>
+              </Col>
+            </Row>
 
             {/* <Review id={idInfo} /> */}
             <Row>
@@ -555,7 +550,7 @@ const CarDetails = ({ match }) => {
                             value="submit"
                             style={{ float: "right" }}
                           >
-                           Submit
+                            Submit
                           </button>
                         </div>
                       </form>
