@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
@@ -24,7 +24,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "auto",
+  width: "20rem",
   height: "auto",
   bgcolor: "background.paper",
   border: "2px solid #000",
@@ -206,130 +206,137 @@ function Profile(id) {
         message={updateRes}
         action={action}
       />
-      <Grid container style={{ marginTop: "-3.5rem" }}>
-        <Grid item xs={12} sm={12} lg={6} md={6}>
-          <Card
-            sx={{ maxWidth: 345 }}
-            style={{
-              position: "relative",
-              marginLeft: "15rem",
-              marginBottom: "2rem",
-              width: 250,
-              height: 400,
-              borderRadius: "5px",
-              boxShadow:
-                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-              padding: "10px 0",
-            }}
-          >
-            
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={12} lg={6} md={6}>
+      <Grid container>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+        >
           <Card
             style={{
               position: "relative",
-              marginLeft: "-8rem",
               marginBottom: "2rem",
-              width: 750,
-              height: 400,
+              width: "auto",
+              height: "auto",
               borderRadius: "5px",
               boxShadow:
                 "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
               padding: "30px",
+              justify: "center",
+              alignContent: "center",
+              alignItems: "center",
             }}
           >
-            <CardContent>
+            <CardContent className="d-flex">
               <div>
                 {userDataValue.gender === "Male" ? (
-              <Stack>
-                <Avatar
-                  sx={{ width: 100, height: 100 }}
-                  src="https://i.pngimg.me/thumb/f/720/1d714a7743.jpg"
-                />
-              </Stack>
-            ) : (
-              <Stack>
-                <Avatar
-                  sx={{ width: 100, height: 100 }}
-                  src="https://i.pngimg.me/thumb/f/720/2c1660d631.jpg"
-                />
-              </Stack>
-            )}
+                  <Stack>
+                    <Avatar
+                      sx={{ width: 100, height: 100 }}
+                      src="https://i.pngimg.me/thumb/f/720/1d714a7743.jpg"
+                    />
+                  </Stack>
+                ) : (
+                  <Stack>
+                    <Avatar
+                      sx={{ width: 100, height: 100 }}
+                      src="https://i.pngimg.me/thumb/f/720/2c1660d631.jpg"
+                    />
+                  </Stack>
+                )}
               </div>
-              <Typography
-                gutterBottom
-                variant="p"
-                component="div"
-                style={{
-                  fontSize: "14px",
-                  marginTop: "-7px",
-                  color: "#858585",
-                }}
-              >
-                {userDataValue.name}
-              </Typography>
+              <div style={{ marginLeft: "2rem", marginTop: "2rem" }}>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  style={{
+                    fontSize: "14px",
+                    marginTop: "-7px",
+                    color: "#858585",
+                  }}
+                >
+                  {userDataValue.name}
+                </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  style={{
+                    fontSize: "14px",
+                    marginTop: "-7px",
+                    color: "#858585",
+                  }}
+                >
+                  {userDataValue.email}
+                </Typography>
+              </div>
             </CardContent>
             <Box>
               <Grid container spacing={1}>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      Name: {userDataValue.name}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      Email: {userDataValue.email}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      Phone: {userDataValue.phone}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      Age: {userDataValue.age}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      Gender: {userDataValue.gender}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
-                      District: {userDataValue.district}
-                    </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                    <Typography margin="auto">
+              <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                  <Typography margin="auto">
                     Address: {userDataValue.address}
-                    </Typography>
+                  </Typography>
                 </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                  <Typography margin="auto">
+                    Phone: {userDataValue.phone}
+                  </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                  <Typography margin="auto">
+                    Age: {userDataValue.age}
+                  </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                  <Typography margin="auto">
+                    Gender: {userDataValue.gender}
+                  </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
+                  <Typography margin="auto">
+                    District: {userDataValue.district}
+                  </Typography>
+                </Grid>
+                
               </Grid>
             </Box>
-            <Grid container sx={{ justifyContent: "center", display: "flex" }}>
+            <Grid container sx={{ justifyContent: "end", display: "flex" }}>
               <Grid item>
                 <Box marginTop={4}>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     sx={{ width: 200, height: 50 }}
                     onClick={handleOpen}
                   >
                     Edit
-                  </Button>
+                  </Button> */}
+                  <button
+                    className="header__btn btn text-white"
+                    onClick={handleOpen}
+                  >
+                    <i class="ri-edit-line"></i> Edit
+                  </button>
                 </Box>
               </Grid>
               <Grid item>
                 <Box marginTop={4} marginLeft={2}>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     sx={{ width: 200, height: 50 }}
                     onClick={HandlePassOpen}
                   >
                     Reset Password
-                  </Button>
+                  </Button> */}
+                  <button
+                    className="header__btn btn text-white"
+                    onClick={HandlePassOpen}
+                  >
+                    <i class="ri-key-2-line"></i> Reset Password
+                  </button>
                 </Box>
               </Grid>
             </Grid>
@@ -520,13 +527,13 @@ function Profile(id) {
                     </Grid>
 
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
-                      <Button
+                      <button
+                        className="header__btn btn text-white"
                         type="submit"
-                        sx={{ height: 50 }}
-                        variant="contained"
+                        style={{ height: "50px" }}
                       >
                         Submit
-                      </Button>
+                      </button>
                     </Box>
                   </Grid>
                 </Container>
@@ -575,13 +582,13 @@ function Profile(id) {
                     </Grid>
                   </Grid>
                   <Box sx={{ display: "flex", justifyContent: "center" }}>
-                    <Button
+                    <button
+                      className="header__btn btn text-white"
                       type="submit"
-                      sx={{ height: 40 }}
-                      variant="contained"
+                      style={{ height: "40px" }}
                     >
                       Reset
-                    </Button>
+                    </button>
                   </Box>
                 </Container>
               </form>
