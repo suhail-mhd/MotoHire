@@ -229,7 +229,7 @@ function AddCars() {
                       //   required: "model is required",
                       //   minLength: { value: 2, message: "minimum length is 2" },
                       // })}
-                      options={cars.length > 0 && cars.map((obj) => obj.model)}
+                      options={cars.length > 0 ? cars.map((obj) => obj.model): []}
                       sx={{ width: 220 }}
                       
                       renderInput={(params) => (
