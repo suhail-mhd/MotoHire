@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Col } from "reactstrap";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { Container, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -6,7 +9,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Modal from "@mui/material/Modal";
@@ -65,7 +67,9 @@ function BookingHistory() {
 
   const getBookingData = () => {
     axios
-      .post("https://moto-hire-backend.onrender.com/api/user/bookingdata", { userId: USERID })
+      .post("https://moto-hire-backend.onrender.com/api/user/bookingdata", {
+        userId: USERID,
+      })
       .then((res) => {
         // console.log(res);
         SetHistory(res.data.bookingData);
@@ -74,7 +78,9 @@ function BookingHistory() {
 
   const CompletedHistory = () => {
     axios
-      .post("https://moto-hire-backend.onrender.com/api/user/completedTrips", { userId: USERID })
+      .post("https://moto-hire-backend.onrender.com/api/user/completedTrips", {
+        userId: USERID,
+      })
       .then((res) => {
         // console.log(res);
         SetCompletedTrips(res.data.bookingData);
@@ -104,7 +110,9 @@ function BookingHistory() {
     // console.log(id);
 
     axios
-      .post(`https://moto-hire-backend.onrender.com/api/user/cancel/${cancelId}`)
+      .post(
+        `https://moto-hire-backend.onrender.com/api/user/cancel/${cancelId}`
+      )
       .then((res) => {
         // console.log(res.data.Message);
         setState(true);
@@ -384,6 +392,14 @@ function BookingHistory() {
             )}
           </TabPanel>
         </TabContext>
+
+        <div className=" d-flex align-items-center justify-content-center ">
+          <button className="header__btn btn">
+            <Link to="/home">
+              <i class="ri-arrow-go-back-line"></i> Back to Home
+            </Link>
+          </button>
+        </div>
       </Box>
     </div>
   );
