@@ -17,7 +17,7 @@
 
 .gradient_background {
   /* background: linear-gradient(90deg, #0062ff, #da61ff),url("../assets/all-images/slider-img/slider-1.jpg"); */
-  background: linear-gradient(#0f3443, #34e89e),
+  background: linear-gradient(rgb(15, 52, 67), rgb(52, 232, 158)),
     url("../../assets/all-images/building.jpg");
   background-position: center;
   background-repeat: no-repeat;
