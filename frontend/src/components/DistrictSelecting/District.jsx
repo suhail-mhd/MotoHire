@@ -71,7 +71,7 @@ function District() {
       <span className=" d-flex align-items-center">
               <i class="ri-sort-asc"></i> Sort By
             </span>
-        <Button style={{ marginLeft: 120 }} onClick={handleOpen}>
+        <Button style={{ marginLeft: 120, color:"#34e89e" }} onClick={handleOpen}>
           District
         </Button>
       </div>

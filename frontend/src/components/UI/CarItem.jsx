@@ -75,12 +75,14 @@ function Cards() {
   const navigate = useNavigate();
 
   const GetCars = async () => {
-    const data = await axios.get("https://moto-hire-backend.onrender.com/api/user/getcarData").then((res) => {
-      // console.log(res.data.data)
+    const data = await axios
+      .get("https://moto-hire-backend.onrender.com/api/user/getcarData")
+      .then((res) => {
+        // console.log(res.data.data)
 
-      setCarsData(res.data.data);
-      SetRender(true);
-    });
+        setCarsData(res.data.data);
+        SetRender(true);
+      });
 
     // console.log(data);
   };
@@ -101,10 +103,14 @@ function Cards() {
     // console.log(searchText);
 
     try {
-      axios.post("https://moto-hire-backend.onrender.com/api/user/search", { searchText }).then((res) => {
-        // console.log(res.data.data);
-        setSearchData(res.data.data);
-      });
+      axios
+        .post("https://moto-hire-backend.onrender.com/api/user/search", {
+          searchText,
+        })
+        .then((res) => {
+          // console.log(res.data.data);
+          setSearchData(res.data.data);
+        });
       SetSearchData(true);
     } catch (error) {
       console.log("error occurred while searching", error);
@@ -113,10 +119,12 @@ function Cards() {
 
   const lowToHigh = () => {
     try {
-      axios.get("https://moto-hire-backend.onrender.com/api/user/lowtohigh").then((res) => {
-        // console.log(res);
-        setLowToHighData(res.data.sort);
-      });
+      axios
+        .get("https://moto-hire-backend.onrender.com/api/user/lowtohigh")
+        .then((res) => {
+          // console.log(res);
+          setLowToHighData(res.data.sort);
+        });
       SetLowToHigh(true);
       SetHighToLow(false);
     } catch (error) {
@@ -126,10 +134,12 @@ function Cards() {
 
   const highToLow = () => {
     try {
-      axios.get("https://moto-hire-backend.onrender.com/api/user/hightolow").then((res) => {
-        //  console.log(res);
-        setHighToLowData(res.data.sorttwo);
-      });
+      axios
+        .get("https://moto-hire-backend.onrender.com/api/user/hightolow")
+        .then((res) => {
+          //  console.log(res);
+          setHighToLowData(res.data.sorttwo);
+        });
       SetHighToLow(true);
       SetLowToHigh(false);
     } catch (error) {}
@@ -170,7 +180,7 @@ function Cards() {
                 <Button
                   aria-describedby={id}
                   type="button"
-                  style={{ marginLeft: 80, marginTop: 1 }}
+                  style={{ marginLeft: 80, marginTop: 2, color:"#34e89e" }}
                   onClick={handleClick}
                 >
                   Price
@@ -200,10 +210,32 @@ function Cards() {
                 <TextField
                   id="outlined-basic"
                   label="Search Cars"
+                  sx={{
+                    // Root class for the input field
+                    "& .MuiOutlinedInput-root": {
+                      color: "#000",
+                      fontFamily: "Arial",
+                      fontWeight: "bold",
+                      // Class for the border around the input field
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#2e2e2e",
+                        borderWidth: "2px",
+                      },
+                    },
+                    // Class for the label of the input field
+                    "& .MuiInputLabel-outlined": {
+                      color: "#2e2e2e",
+                      fontWeight: "bold",
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: { color: '#858585' },
+                  }}
+                  color="primary"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   InputProps={{
-                    style: { height: 50 },
+                    style: { height: 50, color: "#858585", borderColor: "yellow" },
                     endAdornment: (
                       <CloseIcon
                         onClick={handleSearchClear}
@@ -250,14 +282,15 @@ function Cards() {
                       minHeight: 520,
                       borderRadius: 25,
                       // position: relative,
-    background: "rgba(255, 255, 255, 0.15)",
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(18px)',
-    // -webkitBackdropFilter: 'blur(18px)',
-    border: "1px solid rgba(255, 255, 255, 0.18)",
-    // border-radius: 8rem,
-    // padding: 1.5rem,
-    // zIndex: 1,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                      backdropFilter: "blur(18px)",
+                      // -webkitBackdropFilter: 'blur(18px)',
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      color: "#858585",
+                      // border-radius: 8rem,
+                      // padding: 1.5rem,
+                      // zIndex: 1,
                     }}
                     className="card"
                   >
@@ -314,7 +347,7 @@ function Cards() {
                           </Typography>
                         </Box>
                       ) : null}
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography variant="subtitle2">
                         <span style={{ fontWeight: "bold" }}>
                           Available in :
                         </span>{" "}
@@ -322,13 +355,16 @@ function Cards() {
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="text.secondary"
+                      
                         marginTop={1}
                       >
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
+                    <CardActions
+                      style={{ bottom: 8 }}
+                      className=" d-flex align-items-center justify-content-center"
+                    >
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
@@ -356,14 +392,15 @@ function Cards() {
                       minHeight: 520,
                       borderRadius: 25,
                       // position: relative,
-    background: "rgba(255, 255, 255, 0.15)",
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(18px)',
-    // -webkitBackdropFilter: 'blur(18px)',
-    border: "1px solid rgba(255, 255, 255, 0.18)",
-    // border-radius: 8rem,
-    // padding: 1.5rem,
-    // zIndex: 1,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                      backdropFilter: "blur(18px)",
+                      // -webkitBackdropFilter: 'blur(18px)',
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      color: "#858585",
+                      // border-radius: 8rem,
+                      // padding: 1.5rem,
+                      // zIndex: 1,
                     }}
                     className="card"
                   >
@@ -419,7 +456,7 @@ function Cards() {
                           </Typography>
                         </Box>
                       ) : null}
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography variant="subtitle2">
                         <span style={{ fontWeight: "bold" }}>
                           Available in :
                         </span>{" "}
@@ -427,13 +464,16 @@ function Cards() {
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="text.secondary"
+                      
                         marginTop={1}
                       >
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
+                    <CardActions
+                      style={{ bottom: 8 }}
+                      className=" d-flex align-items-center justify-content-center"
+                    >
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
@@ -461,14 +501,15 @@ function Cards() {
                       minHeight: 520,
                       borderRadius: 25,
                       // position: relative,
-    background: "rgba(255, 255, 255, 0.15)",
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(18px)',
-    // -webkitBackdropFilter: 'blur(18px)',
-    border: "1px solid rgba(255, 255, 255, 0.18)",
-    // border-radius: 8rem,
-    // padding: 1.5rem,
-    // zIndex: 1,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                      backdropFilter: "blur(18px)",
+                      // -webkitBackdropFilter: 'blur(18px)',
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      color: "#858585",
+                      // border-radius: 8rem,
+                      // padding: 1.5rem,
+                      // zIndex: 1,
                     }}
                     className="card"
                   >
@@ -524,7 +565,7 @@ function Cards() {
                           </Typography>
                         </Box>
                       ) : null}
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography variant="subtitle2">
                         <span style={{ fontWeight: "bold" }}>
                           Available in :
                         </span>{" "}
@@ -532,13 +573,16 @@ function Cards() {
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="text.secondary"
+                      
                         marginTop={1}
                       >
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
+                    <CardActions
+                      style={{ bottom: 8 }}
+                      className=" d-flex align-items-center justify-content-center"
+                    >
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
@@ -566,14 +610,15 @@ function Cards() {
                       minHeight: 520,
                       borderRadius: 25,
                       // position: relative,
-    background: "rgba(255, 255, 255, 0.15)",
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(18px)',
-    // -webkitBackdropFilter: 'blur(18px)',
-    border: "1px solid rgba(255, 255, 255, 0.18)",
-    // border-radius: 8rem,
-    // padding: 1.5rem,
-    // zIndex: 1,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                      backdropFilter: "blur(18px)",
+                      // -webkitBackdropFilter: 'blur(18px)',
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      color: "#858585",
+                      // border-radius: 8rem,
+                      // padding: 1.5rem,
+                      // zIndex: 1,
                     }}
                     className="card"
                   >
@@ -629,7 +674,7 @@ function Cards() {
                           </Typography>
                         </Box>
                       ) : null}
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography variant="subtitle2">
                         <span style={{ fontWeight: "bold" }}>
                           Available in :{" "}
                         </span>
@@ -637,13 +682,16 @@ function Cards() {
                       </Typography>
                       <Typography
                         variant="body2"
-                        color="text.secondary"
+                      
                         marginTop={1}
                       >
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
+                    <CardActions
+                      style={{ bottom: 8 }}
+                      className=" d-flex align-items-center justify-content-center"
+                    >
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}
@@ -671,14 +719,15 @@ function Cards() {
                       minHeight: 520,
                       borderRadius: 25,
                       // position: relative,
-    background: "rgba(255, 255, 255, 0.15)",
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(18px)',
-    // -webkitBackdropFilter: 'blur(18px)',
-    border: "1px solid rgba(255, 255, 255, 0.18)",
-    // border-radius: 8rem,
-    // padding: 1.5rem,
-    // zIndex: 1,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                      backdropFilter: "blur(18px)",
+                      // -webkitBackdropFilter: 'blur(18px)',
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      color: "#858585",
+                      // border-radius: 8rem,
+                      // padding: 1.5rem,
+                      // zIndex: 1,
                     }}
                     className="card"
                   >
@@ -734,7 +783,7 @@ function Cards() {
                           </Typography>
                         </Box>
                       ) : null}
-                      <Typography variant="subtitle2" color="text.secondary">
+                      <Typography variant="subtitle2">
                         <span style={{ fontWeight: "bold" }}>
                           Available in :
                         </span>{" "}
@@ -743,13 +792,16 @@ function Cards() {
 
                       <Typography
                         variant="body2"
-                        color="text.secondary"
+                      
                         marginTop={1}
                       >
                         {obj.description}
                       </Typography>
                     </CardContent>
-                    <CardActions style={{ bottom: 8 }} className=" d-flex align-items-center justify-content-center">
+                    <CardActions
+                      style={{ bottom: 8 }}
+                      className=" d-flex align-items-center justify-content-center"
+                    >
                       <button
                         className="header__btn btn text-white"
                         onClick={() => navigate(`/productpage/${obj._id}`)}

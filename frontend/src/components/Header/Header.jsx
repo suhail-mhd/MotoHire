@@ -257,7 +257,7 @@ const Header = (props) => {
               <div className="logo">
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <img
-                    src={mainLogo}
+                    src={whiteLogo}
                     style={{
                       width: "150px",
                       position: "absolute",

@@ -12,7 +12,15 @@ function App() {
     }, 3000); // Adjust time as needed
   }, []);
 
-  return <>{loading ? <Loading /> : <Layout />}</>;
+  return <>
+  <div style={{
+    background:"#100718",
+    color:"#f4f4f4",
+  }}>
+<div className="blob"></div>
+  {loading ? <Loading /> : <Layout />}
+  </div>
+  </>;
 }
 
 export default App;

@@ -1,9 +1,10 @@
 import * as React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -13,7 +14,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import Modal from "@mui/material/Modal";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -116,9 +116,15 @@ export default function SignIn() {
         },
       };
 
-      axios.post("https://moto-hire-backend.onrender.com/api/user/otpnumber", { mobNumber }, config).then((res) => {
-        console.log(res);
-      });
+      axios
+        .post(
+          "https://moto-hire-backend.onrender.com/api/user/otpnumber",
+          { mobNumber },
+          config
+        )
+        .then((res) => {
+          console.log(res);
+        });
 
       setOpenModal(false);
       setOtpModal(true);
@@ -142,7 +148,11 @@ export default function SignIn() {
       };
 
       axios
-        .post("https://moto-hire-backend.onrender.com/api/user/otpvalidate", { otp, mobNumber }, config)
+        .post(
+          "https://moto-hire-backend.onrender.com/api/user/otpvalidate",
+          { otp, mobNumber },
+          config
+        )
         .then((res) => {
           // console.log(res.data.res.status);
           // console.log(res.data);
@@ -177,7 +187,7 @@ export default function SignIn() {
       <Container
         component="main"
         maxWidth="xs"
-        style={{ marginBottom: "3rem" }}
+        style={{ marginBottom: "3rem", zIndex:30, position:"relative" }}
       >
         <CssBaseline />
         <Box
@@ -203,6 +213,9 @@ export default function SignIn() {
             {error && <ErrorMessage>{error}</ErrorMessage>}
 
             <TextField
+              InputLabelProps={{
+                style: { color: "#858585" },
+              }}
               margin="normal"
               required
               fullWidth
@@ -225,6 +238,9 @@ export default function SignIn() {
             </p>
 
             <TextField
+              InputLabelProps={{
+                style: { color: "#858585" },
+              }}
               margin="normal"
               required
               fullWidth
@@ -246,17 +262,16 @@ export default function SignIn() {
               {errors.password && errors.password.message}
             </p>
 
-            <Typography style={{ textAlign: "center", display:"none" }}>
+            <Typography style={{ textAlign: "center", display: "none" }}>
               <Button onClick={handleOpen}>Login With Otp</Button>
             </Typography>
-            <Button
+            <button
+              className="header__btn btn "
               type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              style={{ color: "#fff", marginBottom:"1rem" }}
             >
               Sign In
-            </Button>
+            </button>
             <Grid container>
               {/* <Grid item xs>
                 <Link href="#" variant="body2">
@@ -264,13 +279,17 @@ export default function SignIn() {
                 </Link>
               </Grid> */}
               <Grid item>
-              Don't have an account?
-                <Link href="/signup" variant="body2" style={{
+                Don't have an account?
+                <Link
+                  to="/signup"
+                  variant="body2"
+                  style={{
                     textDecoration: "none",
                     fontWeight: "bold",
                     marginLeft: "10px",
-                  }}>
-                   Sign Up
+                  }}
+                >
+                  Sign Up
                 </Link>
               </Grid>
             </Grid>
@@ -329,13 +348,13 @@ export default function SignIn() {
                     marginTop: 10,
                   }}
                 >
-                  <Button
-                    style={{ height: 40, width: 100 }}
-                    variant="outlined"
+                  <button
+                    className="header__btn btn "
                     type="submit"
+                    style={{ color: "#fff" }}
                   >
                     LogIn
-                  </Button>
+                  </button>
                 </div>
               </form>
               {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>

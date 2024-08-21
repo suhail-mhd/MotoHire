@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Input } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
+import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
+import { styled } from '@mui/system';
 
 import "../styles/contact.css";
 
@@ -21,11 +23,29 @@ const socialLinks = [
   },
 ];
 
+const TextareaAutosize = styled(BaseTextareaAutosize)(
+  ({ theme }) => `
+  box-sizing: border-box;
+  width: 460px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  // firefox
+  &:focus-visible {
+    outline: 0;
+  }
+`,
+);
+
 const Contact = () => {
   return (
     <Helmet title="Contact">
       <CommonSection title="Contact" />
-      <section>
+      <section style={{zIndex:30, position:"relative"}}>
         <Container>
           <Row>
             <Col lg="7" md="7">
@@ -39,14 +59,10 @@ const Contact = () => {
                   <Input placeholder="Email" type="email" />
                 </FormGroup>
                 <FormGroup className="contact__form">
-                  <textarea
-                    rows="5"
-                    placeholder="Message"
-                    className="textarea"
-                  ></textarea>
+                <TextareaAutosize aria-label="empty textarea" placeholder="Message" />
                 </FormGroup>
 
-                <button className=" contact__btn" type="submit">
+                <button className="header__btn btn" type="submit" style={{color:"#fff"}}>
                   Send Message
                 </button>
               </Form>

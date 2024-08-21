@@ -2,92 +2,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
 
 /* ======= base style ====== */
-:root{
-  /**/
-  /*other default setting ...*/
-  /**/
-    --secondary-glow: conic-gradient(
-      from 10deg at 50% 50%,
-      #0f3443 0deg,
-      #34e89e 55deg,
-      #97b5da 120deg,
-      #0099ca 160deg,
-      transparent 360deg
-    );
-  
-    --third-glow: conic-gradient(
-      from 90deg at 50% 50%,
-      #34e89e 0deg,
-      #0f3443 160deg,
-      #7ed2da 120deg,
-      #8bdce0 55deg,
-      transparent 360deg
-    );
-  }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
   scroll-behavior: smooth;
-  }
+}
 
-/* ========= pre-define css ========= */
-body::before,
-body::after {
-  content: '';
+.blob {
   position: fixed;
-  z-index: -1;
-  opacity:0.8
-}
-
-body::before {
-  background: var(--third-glow);
-  border-radius: 50%;
-  width: 50vw;
-  height: 50vw;
-  margin-left: -200px;
-  filter:blur(90px);  
-  top: calc(50vh - 50vw/2);
-  left: calc(50vw );
-  animation: animateBefore 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
-}
-
-body::after {
-  background: var(--secondary-glow);
-  border-radius: 50%;
   width: 500px;
-  height: 700px;
-  filter:blur(90px);
-  top: calc(50vh - 50vw/2);
-  left: calc(50vw - 50vw/2);
-  animation: animateAfter 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
+  height: 500px;
+  background: linear-gradient(180deg, rgb(15, 52, 67) 31.77%, #34e89e 100%);
+  mix-blend-mode: color-dodge;
+  -webkit-animation: move 25s infinite alternate;
+  animation: move 25s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  /* z-index: -1; */
 }
 
-@keyframes animateBefore {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(200px) scale(0.8);
+.blob:hover {
+  width: 520px;
+  height: 520px;
+  -webkit-filter: blur(30px);
+  filter: blur(30px);
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.6),
+    inset 100px 100px 0 0px #fa709a, inset 200px 200px 0 0px #784ba8,
+    inset 300px 300px 0 0px #2b86c5;
+}
 
+@-webkit-keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
   }
-  100% {
-    transform: translateY(0);
+
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
   }
 }
 
-@keyframes animateAfter{
-  0% {
-    transform: translateX(0);
+@keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
   }
-  50% {
-    transform: translateX(-250px) scale(1.2);
 
-  }
-  100% {
-    transform: translateX(0);
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
   }
 }
 

@@ -14,11 +14,11 @@ const AboutSection = ({ aboutClass }) => {
       }
     >
       <Container>
-        <Row>
+        <Row style={{zIndex:30, position:"relative"}}>
           <Col lg="6" md="6">
             <div className="about__section-content">
               <h4 className="section__subtitle">About Us</h4>
-              <h2 className="section__title" style={{fontWeight:'bold'}}>Welcome to MotoHire</h2>
+              <h2 className="section__title" style={{fontWeight:'bold', color:"#0f3443"}}>Welcome to MotoHire</h2>
               <p className="section__description">
               Welcome to MotoHire, your trusted partner for car rentals. At MotoHire, we believe in providing seamless and affordable transportation solutions to meet your diverse travel needs. Whether you're planning a weekend getaway, a business trip, or simply need a vehicle for daily errands, we have the perfect car for you.
               </p>

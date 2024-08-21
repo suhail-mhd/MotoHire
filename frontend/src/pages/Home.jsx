@@ -206,10 +206,10 @@ const Home = () => {
       {/* ========== services section ============ */}
       <section>
         <Container>
-          <Row>
+          <Row style={{zIndex:30, position:"relative"}}>
             <Col lg="12" className="mb-5 text-center">
               <h6 className="section__subtitle">See our</h6>
-              <h2 className="section__title" style={{ fontWeight: "bold" }}>
+              <h2 className="section__title" style={{ fontWeight: "bold", color:"#0f3443" }}>
                 Popular Services
               </h2>
             </Col>
@@ -221,10 +221,10 @@ const Home = () => {
       {/* =========== car offer section ============= */}
       <section>
         <Container>
-          <Row>
+          <Row style={{zIndex:30, position:"relative"}}>
             <Col lg="12" className="text-center mt-5 mb-5">
               <h6 className="section__subtitle">Come with</h6>
-              <h2 className="section__title" style={{ fontWeight: "bold" }}>
+              <h2 className="section__title" style={{ fontWeight: "bold", color:"#0f3443" }}>
                 Hot Offers
               </h2>
             </Col>

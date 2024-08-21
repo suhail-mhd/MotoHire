@@ -1,11 +1,12 @@
 import * as React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import Checkbox from '@mui/material/Checkbox';
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -17,7 +18,6 @@ import NativeSelect from "@mui/material/NativeSelect";
 import InputLabel from "@mui/material/InputLabel";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
 
@@ -107,7 +107,7 @@ export default function SignUp() {
       <Container
         component="main"
         maxWidth="xs"
-        style={{ marginBottom: "3rem" }}
+        style={{ marginBottom: "3rem", zIndex:30, position:"relative" }}
       >
         <CssBaseline />
         <Box
@@ -134,6 +134,9 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   autoComplete="given-name"
                   name="name"
                   required
@@ -153,6 +156,9 @@ export default function SignUp() {
               </Grid>
               {/* <Grid item xs={12} sm={6}>
                 <TextField
+                InputLabelProps={{
+                    style: { color: '#858585' },
+                  }}
                   required
                   fullWidth
                   id="lastName"
@@ -164,6 +170,9 @@ export default function SignUp() {
               </Grid> */}
               <Grid item xs={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   required
                   fullWidth
                   id="email"
@@ -185,6 +194,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   required
                   fullWidth
                   name="password"
@@ -204,6 +216,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   variant="standard"
                   label="Confirm Password"
                   placeholder="Confirm Password"
@@ -222,6 +237,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   required
                   variant="standard"
                   label="Phone"
@@ -248,6 +266,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
                   variant="standard"
                   label="Address"
                   placeholder="Enter Your Address"
@@ -263,7 +284,7 @@ export default function SignUp() {
               </Grid>
               <Grid container spacing={2}>
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-                  <InputLabel htmlFor="demo-customized-select-native">
+                  <InputLabel htmlFor="demo-customized-select-native" style={{color:"#858585"}}>
                     Age
                   </InputLabel>
                   <NativeSelect
@@ -271,6 +292,7 @@ export default function SignUp() {
                     value={age}
                     onChange={handleChange}
                     label="Age"
+                    style={{color:"#858585"}}
                   >
                     <option aria-label="None" value="" />
                     <option>18</option>
@@ -305,7 +327,7 @@ export default function SignUp() {
                 </FormControl>
 
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-                  <InputLabel htmlFor="demo-customized-select-native">
+                  <InputLabel htmlFor="demo-customized-select-native" style={{color:"#858585"}}>
                     Gender
                   </InputLabel>
                   <NativeSelect
@@ -313,6 +335,7 @@ export default function SignUp() {
                     value={gender}
                     onChange={handleChange2}
                     label="gender"
+                    style={{color:"#858585"}}
                   >
                     <option aria-label="None" value="" />
                     <option>Male</option>
@@ -321,7 +344,7 @@ export default function SignUp() {
                   </NativeSelect>
                 </FormControl>
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-                  <InputLabel htmlFor="demo-customized-select-native">
+                  <InputLabel htmlFor="demo-customized-select-native" style={{color:"#858585"}}>
                     District
                   </InputLabel>
                   <NativeSelect
@@ -329,6 +352,7 @@ export default function SignUp() {
                     value={district}
                     onChange={handleChange3}
                     label="district"
+                    style={{color:"#858585"}}
                   >
                     <option aria-label="None" value="" />
                     <option>Kottayam</option>
@@ -342,14 +366,13 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}></Grid>
             </Grid>
-            <Button
+            <button
+              className="header__btn btn "
               type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              style={{ color: "#fff" }}
             >
               Sign Up
-            </Button>
+            </button>
             <Grid
               container
               justifyContent="flex-end"
@@ -358,7 +381,7 @@ export default function SignUp() {
               <Grid item>
                 Already have an account?
                 <Link
-                  href="/login"
+                  to="/login"
                   variant="body2"
                   style={{
                     textDecoration: "none",
