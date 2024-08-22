@@ -281,16 +281,11 @@ function Cards() {
                       position: "relative",
                       minHeight: 520,
                       borderRadius: 25,
-                      // position: relative,
                       background: "rgba(255, 255, 255, 0.05)",
                       boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
                       backdropFilter: "blur(18px)",
-                      // -webkitBackdropFilter: 'blur(18px)',
                       border: "1px solid rgba(255, 255, 255, 0.18)",
                       color: "#858585",
-                      // border-radius: 8rem,
-                      // padding: 1.5rem,
-                      // zIndex: 1,
                     }}
                     className="card"
                   >

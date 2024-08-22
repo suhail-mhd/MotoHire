@@ -236,7 +236,7 @@ const CarDetails = ({ match }) => {
 
   return (
     <Helmet title="Car Detail">
-      <section>
+      <section style={{ zIndex: 30, position: "relative" }}>
         <Container>
           <Row>
             <Col lg="6">
@@ -251,7 +251,10 @@ const CarDetails = ({ match }) => {
 
             <Col lg="6">
               <div className="car__info">
-                <h2 className="section__title">
+                <h2
+                  className="section__title"
+                  style={{ color: "#0f3443", fontWeight: "bold" }}
+                >
                   {" "}
                   {carData.brand} {carData.model}
                 </h2>
@@ -318,7 +321,7 @@ const CarDetails = ({ match }) => {
                   </span>
                 </div>
               </div>
-              <ColoredLine color="black" />
+              <ColoredLine color="#858585" />
             </Col>
 
             <Row style={{ marginBottom: "4rem", marginTop: "2rem" }}>
@@ -339,9 +342,27 @@ const CarDetails = ({ match }) => {
                         }}
                         renderInput={(startProps, endProps) => (
                           <React.Fragment>
-                            <TextField {...startProps} autoComplete="off" />
+                            <TextField
+                              {...startProps}
+                              autoComplete="off"
+                              InputLabelProps={{
+                                style: { color: "#858585" },
+                              }}
+                              InputProps={{
+                                style: { color: "#858585" },
+                              }}
+                            />
                             <Box sx={{ mx: 2 }}> to </Box>
-                            <TextField {...endProps} autoComplete="off" />
+                            <TextField
+                              {...endProps}
+                              autoComplete="off"
+                              InputLabelProps={{
+                                style: { color: "#858585" },
+                              }}
+                              InputProps={{
+                                style: { color: "#858585" },
+                              }}
+                            />
                           </React.Fragment>
                         )}
                       />
@@ -495,25 +516,41 @@ const CarDetails = ({ match }) => {
 
             {/* <Review id={idInfo} /> */}
             <Row>
-              <Col md={6}>
-                <h2>Reviews</h2>
-                <ListGroup variant="flush">
+              <Col
+                md={6}
+                style={{
+                  margin: 15,
+                  Height: "auto",
+                  position: "relative",
+                  minHeight: 520,
+                  borderRadius: 25,
+                  background: "rgba(255, 255, 255, 0.05)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(18px)",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  color: "#858585",
+                  padding: "3rem",
+                }}
+              >
+                <h2 style={{ color: "#f4f4f4" }}>Reviews</h2>
+                <div>
                   {carData.reviews?.length > 0 &&
                     carData.reviews.map((review) => (
-                      <ListGroup.Item key={review._id}>
+                      <div key={review._id}>
                         <strong>{review.name}</strong>
                         <Review value={review.rating} />
                         <p>{review.createdAt.substring(0, 10)}</p>
                         <p>{review.comment}</p>
-                      </ListGroup.Item>
+                      </div>
                     ))}
-                  <ListGroup.Item>
+                  <div>
+                    <ColoredLine color="#858585" />
                     {errorProductReview && (
                       <Message variant="danger">{errorProductReview}</Message>
                     )}
                     {userInfo ? (
-                      <form className="form" onSubmit={submitHandler}>
-                        <div style={{ marginBottom: "1rem" }}>
+                      <form onSubmit={submitHandler}>
+                        <div style={{ marginBottom: "1rem", color: "#f4f4f4" }}>
                           <h2>Write a customer review</h2>
                         </div>
                         <div style={{ marginBottom: "1rem" }}>
@@ -521,7 +558,11 @@ const CarDetails = ({ match }) => {
                           <select
                             id="rating"
                             value={rating}
-                            style={{ marginLeft: 35 }}
+                            style={{
+                              marginLeft: 35,
+                              background: "transparent",
+                              color: "#858585",
+                            }}
                             onChange={(e) => setRating(e.target.value)}
                           >
                             <option value="">Select</option>
@@ -535,7 +576,13 @@ const CarDetails = ({ match }) => {
                         <div style={{ marginBottom: "2rem" }}>
                           <label htmlFor="comment">Comment</label>
                           <textarea
-                            style={{ width: 300, height: 100, marginLeft: 10 }}
+                            style={{
+                              width: 300,
+                              height: 100,
+                              marginLeft: 10,
+                              background: "transparent",
+                              color: "#858585",
+                            }}
                             id="comment"
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
@@ -559,8 +606,8 @@ const CarDetails = ({ match }) => {
                         Please <Link to="/login">sign in</Link>to write a review
                       </Message>
                     )}
-                  </ListGroup.Item>
-                </ListGroup>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Row>

@@ -24,11 +24,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "20rem",
+  width: "30rem",
   height: "auto",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
+  background: "rgba(255, 255, 255, 0.05)",
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+  backdropFilter: "blur(18px)",
+  border: "1px solid rgba(255, 255, 255, 0.18)",
+  color: "#858585",
   p: 4,
 };
 
@@ -221,8 +223,11 @@ function Profile(id) {
               width: "auto",
               height: "auto",
               borderRadius: "5px",
-              boxShadow:
-                "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+              background: "rgba(255, 255, 255, 0.05)",
+              boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+              backdropFilter: "blur(18px)",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
+              color: "#858585",
               padding: "30px",
               justify: "center",
               alignContent: "center",
@@ -358,8 +363,20 @@ function Profile(id) {
                 <Container>
                   <Grid container mt={5}>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
-                      {/* <TextField id="outlined-basic" label="Outlined" variant="outlined"  /> */}
+                      {/* <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }} id="outlined-basic" label="Outlined" variant="outlined"  /> */}
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Name"
                         placeholder="Enter Name"
                         type="text"
@@ -372,6 +389,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Email"
                         placeholder="Enter Name"
                         type="text"
@@ -384,6 +407,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Phone"
                         placeholder="Enter Name"
                         type="text"
@@ -396,6 +425,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       {/* <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="District"
                         placeholder="Enter Name"
                         type="text"
@@ -408,7 +443,7 @@ function Profile(id) {
                         variant="standard"
                         sx={{ m: 1, minWidth: 120 }}
                       >
-                        <InputLabel htmlFor="demo-customized-select-native">
+                        <InputLabel htmlFor="demo-customized-select-native"style={{color:"#858585"}}>
                           District
                         </InputLabel>
                         <NativeSelect
@@ -416,6 +451,7 @@ function Profile(id) {
                           value={district}
                           onChange={(e) => setDistrict(e.target.value)}
                           label="district"
+                          style={{color:"#858585"}}
                         >
                           <option aria-label="None" value="" />
                           <option>Kottayam</option>
@@ -429,6 +465,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       {/* <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Gender"
                         placeholder="Enter Name"
                         type="text"
@@ -441,7 +483,7 @@ function Profile(id) {
                         variant="standard"
                         sx={{ m: 1, minWidth: 120 }}
                       >
-                        <InputLabel htmlFor="demo-customized-select-native">
+                        <InputLabel htmlFor="demo-customized-select-native"style={{color:"#858585"}}>
                           Gender
                         </InputLabel>
                         <NativeSelect
@@ -449,6 +491,7 @@ function Profile(id) {
                           value={gender}
                           onChange={(e) => setGender(e.target.value)}
                           label="gender"
+                          style={{color:"#858585"}}
                         >
                           <option aria-label="None" value="" />
                           <option>Male</option>
@@ -459,6 +502,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Address"
                         placeholder="Enter Name"
                         type="text"
@@ -471,6 +520,12 @@ function Profile(id) {
                     </Grid>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       {/* <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Age"
                         placeholder="Enter Age"
                         type="number"
@@ -483,7 +538,7 @@ function Profile(id) {
                         variant="standard"
                         sx={{ m: 1, minWidth: 120 }}
                       >
-                        <InputLabel htmlFor="demo-customized-select-native">
+                        <InputLabel htmlFor="demo-customized-select-native"style={{color:"#858585"}}>
                           Age
                         </InputLabel>
                         <NativeSelect
@@ -491,6 +546,7 @@ function Profile(id) {
                           value={age}
                           onChange={(e) => setAge(e.target.value)}
                           label="Age"
+                          style={{color:"#858585"}}
                         >
                           <option aria-label="None" value="" />
                           <option>18</option>
@@ -560,6 +616,12 @@ function Profile(id) {
                   <Grid container mt={5}>
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Password"
                         placeholder="Enter Password"
                         type="password"
@@ -571,6 +633,12 @@ function Profile(id) {
 
                     <Grid xl={6} sm={12} xs={12} md={6} lg={6} marginBottom={2}>
                       <TextField
+                      InputLabelProps={{
+                          style: { color: '#858585' },
+                        }}
+                        InputProps={{
+                          style: { color: '#858585' },
+                        }}
                         label="Confirm Password"
                         placeholder="Confirm Password"
                         type="password"

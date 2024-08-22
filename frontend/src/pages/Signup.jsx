@@ -137,6 +137,9 @@ export default function SignUp() {
                   InputLabelProps={{
                     style: { color: "#858585" },
                   }}
+                  InputProps={{
+                    style: { color: "#858585" },
+                  }}
                   autoComplete="given-name"
                   name="name"
                   required
@@ -173,6 +176,9 @@ export default function SignUp() {
                   InputLabelProps={{
                     style: { color: "#858585" },
                   }}
+                  InputProps={{
+                    style: { color: "#858585" },
+                  }}
                   required
                   fullWidth
                   id="email"
@@ -197,6 +203,9 @@ export default function SignUp() {
                   InputLabelProps={{
                     style: { color: "#858585" },
                   }}
+                  InputProps={{
+                    style: { color: "#858585" },
+                  }}
                   required
                   fullWidth
                   name="password"
@@ -219,6 +228,9 @@ export default function SignUp() {
                   InputLabelProps={{
                     style: { color: "#858585" },
                   }}
+                  InputProps={{
+                    style: { color: "#858585" },
+                  }}
                   variant="standard"
                   label="Confirm Password"
                   placeholder="Confirm Password"
@@ -238,6 +250,9 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
+                  InputProps={{
                     style: { color: "#858585" },
                   }}
                   required
@@ -267,6 +282,9 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   InputLabelProps={{
+                    style: { color: "#858585" },
+                  }}
+                  InputProps={{
                     style: { color: "#858585" },
                   }}
                   variant="standard"

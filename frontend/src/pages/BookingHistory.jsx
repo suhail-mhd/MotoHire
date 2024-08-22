@@ -23,10 +23,15 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
+  background: "rgba(255, 255, 255, 0.05)",
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+  backdropFilter: "blur(18px)",
+  border: "1px solid rgba(255, 255, 255, 0.18)",
+  color: "#fff",
   p: 4,
+  tab: {
+		color: '#f4f4f4'
+	},
 };
 
 function BookingHistory() {
@@ -130,7 +135,7 @@ function BookingHistory() {
   }, [render, PageRender]);
 
   return (
-    <div>
+    <div style={{ zIndex: 30, position: "relative" }}>
       <Modal
         open={open}
         onClose={handleClosemodal}
@@ -180,7 +185,7 @@ function BookingHistory() {
         >
           Booking History
         </Typography>
-        <TabContext value={value}>
+        <TabContext value={value} >
           <Box
             sx={{
               borderBottom: 1,
@@ -189,10 +194,18 @@ function BookingHistory() {
               justifyContent: "center",
             }}
           >
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Pending" value="1" />
-              <Tab label="Completed" value="2" />
-              <Tab label="Cancelled" value="3" />
+            <TabList
+              onChange={handleChange}
+              aria-label="lab API tabs example"
+              TabIndicatorProps={{
+                style: {
+                  backgroundColor: '#34e89e', // Selected tab underline color
+                },
+              }}
+            >
+              <Tab label="Pending" value="1" sx={{ color: '#f4f4f4', '&.Mui-selected': { color: '#34e89e' } }}/>
+              <Tab label="Completed" value="2" sx={{ color: '#f4f4f4', '&.Mui-selected': { color: '#34e89e' } }}/>
+              <Tab label="Cancelled" value="3" sx={{ color: '#f4f4f4', '&.Mui-selected': { color: '#34e89e' } }}/>
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -220,23 +233,33 @@ function BookingHistory() {
                         xl={3}
                         key={index}
                       >
-                        <Card sx={{ minWidth: 275 }}>
+                        <Card
+                          sx={{ minWidth: 275 }}
+                          style={{
+                            borderRadius: 25,
+                            background: "rgba(255, 255, 255, 0.05)",
+                            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                            backdropFilter: "blur(18px)",
+                            border: "1px solid rgba(255, 255, 255, 0.18)",
+                            color: "#858585",
+                          }}
+                        >
                           <CardContent>
                             <Typography variant="h5" component="div">
                               Car : {obj.carname}
                             </Typography>
                             <br />
-                            <Typography color="text.secondary">
+                            <Typography>
                               Trip Start : {obj.startDate}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography sx={{ mb: 1.5 }}>
                               Trip End : {obj.endDate}
                             </Typography>
                             <Typography variant="body2">
                               Total Rent : {obj.PayedAmount}
                             </Typography>
                           </CardContent>
-                          <CardActions>
+                          <CardActions className="d-flex align-items-center justify-content-end">
                             <Button
                               size="small"
                               variant="outlined"
@@ -288,16 +311,26 @@ function BookingHistory() {
                         xl={3}
                         key={index}
                       >
-                        <Card sx={{ minWidth: 275 }}>
+                        <Card
+                          sx={{ minWidth: 275 }}
+                          style={{
+                            borderRadius: 25,
+                            background: "rgba(255, 255, 255, 0.05)",
+                            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                            backdropFilter: "blur(18px)",
+                            border: "1px solid rgba(255, 255, 255, 0.18)",
+                            color: "#858585",
+                          }}
+                        >
                           <CardContent>
                             <Typography variant="h5" component="div">
                               Car : {obj.carname}
                             </Typography>
                             <br />
-                            <Typography color="text.secondary">
+                            <Typography>
                               Trip Start : {obj.startDate}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography sx={{ mb: 1.5 }}>
                               Trip End : {obj.endDate}
                             </Typography>
                             <Typography variant="body2">
@@ -309,6 +342,7 @@ function BookingHistory() {
                               variant="subtitle2"
                               color="#8bc34a"
                               component="div"
+                              className="d-flex align-items-center justify-content-end"
                             >
                               Completed
                             </Typography>
@@ -350,16 +384,26 @@ function BookingHistory() {
                         xl={3}
                         key={index}
                       >
-                        <Card sx={{ minWidth: 275 }}>
+                        <Card
+                          sx={{ minWidth: 275 }}
+                          style={{
+                            borderRadius: 25,
+                            background: "rgba(255, 255, 255, 0.05)",
+                            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                            backdropFilter: "blur(18px)",
+                            border: "1px solid rgba(255, 255, 255, 0.18)",
+                            color: "#858585",
+                          }}
+                        >
                           <CardContent>
                             <Typography variant="h5" component="div">
                               Car : {obj.carname}
                             </Typography>
                             <br />
-                            <Typography color="text.secondary">
+                            <Typography>
                               Trip Start : {obj.startDate}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography sx={{ mb: 1.5 }}>
                               Trip End : {obj.endDate}
                             </Typography>
                             <Typography variant="body2">
@@ -371,6 +415,7 @@ function BookingHistory() {
                               variant="subtitle2"
                               color="error"
                               component="div"
+                              className="d-flex align-items-center justify-content-end"
                             >
                               Cancelled
                             </Typography>

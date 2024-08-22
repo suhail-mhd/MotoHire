@@ -216,6 +216,9 @@ export default function SignIn() {
               InputLabelProps={{
                 style: { color: "#858585" },
               }}
+              InputProps={{
+                style: { color: "#858585" },
+              }}
               margin="normal"
               required
               fullWidth
@@ -223,7 +226,7 @@ export default function SignIn() {
               label="Email"
               name="email"
               autoComplete="email"
-              autoFocus
+              // autoFocus
               variant="standard"
               {...register("email", {
                 required: "Email is required",
@@ -239,6 +242,9 @@ export default function SignIn() {
 
             <TextField
               InputLabelProps={{
+                style: { color: "#858585" },
+              }}
+              InputProps={{
                 style: { color: "#858585" },
               }}
               margin="normal"
