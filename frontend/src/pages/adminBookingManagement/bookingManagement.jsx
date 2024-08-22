@@ -28,7 +28,7 @@ function AdminBooking() {
         console.log(id);
 
         axios.post(`https://moto-hire-backend.onrender.com/api/admin/completed/${id}`).then((res)=>{
-            console.log(res.data.data.message);
+            console.log(res.data.data?.message);
         })
         setRender(true)
     }
@@ -71,7 +71,7 @@ function AdminBooking() {
                 <TableCell align="right">{obj.endDate}</TableCell>
                 <TableCell align="right">{obj.PayedAmount}</TableCell>
                 {/* <TableCell align="right">{obj.cancel ? <p >Cancelled</p> : "Not Cancelled" }</TableCell> */}
-                <TableCell align="right">{obj.cancel ? <p style={{color:'red'}}  >Cancelled</p> : obj.complete ? <p style={{color:'green'}} >Completed</p> : <Button variant='outlined' color='success' onClick={()=>completeHandle(`${`${obj._id}`}`)} >Completed</Button>}</TableCell>
+                <TableCell align="right">{obj.cancel ? <p style={{color:'red'}}  >Cancelled</p> : obj.complete ? <p style={{color:'green'}} >Completed</p> : <Button variant='outlined' color='success' onClick={()=>completeHandle(`${`${obj?._id}`}`)} >Completed</Button>}</TableCell>
               </TableRow>
               )
           })

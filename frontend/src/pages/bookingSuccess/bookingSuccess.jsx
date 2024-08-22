@@ -99,6 +99,7 @@ function BookingSuccess() {
                   display: "flex",
                   justifyContent: "center",
                   marginTop: 30,
+                  zIndex:30, position:"relative"
                 }}
               >
                 <button

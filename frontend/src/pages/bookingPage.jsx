@@ -1,4 +1,12 @@
-import { Box, Container, Typography, Grid, Paper, Button, CardMedia } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  Button,
+  CardMedia,
+} from "@mui/material";
 import Helmet from "../components/Helmet/Helmet";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -19,9 +27,12 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
+  borderRadius: 5,
+  background: "rgba(255, 255, 255, 0.05)",
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+  backdropFilter: "blur(18px)",
+  border: "1px solid rgba(255, 255, 255, 0.18)",
+  color: "#858585",
   p: 4,
 };
 
@@ -255,9 +266,12 @@ function BookingPage(id) {
                   marginBottom: "2rem",
                   width: "auto",
                   height: "auto",
-                  borderRadius: "5px",
-                  boxShadow:
-                    "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+                  borderRadius: 25,
+                  background: "rgba(255, 255, 255, 0.05)",
+                  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                  backdropFilter: "blur(18px)",
+                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  color: "#858585",
                   padding: "30px",
                   justify: "center",
                   alignContent: "center",
@@ -283,7 +297,7 @@ function BookingPage(id) {
                             fontWeight: "bold",
                           }}
                         >
-                          <p style={{color:"#0f3443"}}>
+                          <p style={{ color: "#0f3443" }}>
                             {cardata.brand} {cardata.model}
                           </p>
                         </Box>
@@ -297,7 +311,6 @@ function BookingPage(id) {
                       />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} xl={6}>
-                      
                       <Grid item sm={12} xs={12} md={12} lg={12} xl={12}>
                         <Box
                           sx={{

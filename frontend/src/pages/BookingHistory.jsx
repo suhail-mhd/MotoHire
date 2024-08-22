@@ -337,12 +337,11 @@ function BookingHistory() {
                               Total Rent : {obj.PayedAmount}
                             </Typography>
                           </CardContent>
-                          <CardActions>
+                          <CardActions className="d-flex align-items-center justify-content-end">
                             <Typography
                               variant="subtitle2"
                               color="#8bc34a"
                               component="div"
-                              className="d-flex align-items-center justify-content-end"
                             >
                               Completed
                             </Typography>
@@ -410,12 +409,12 @@ function BookingHistory() {
                               Total Rent : {obj.PayedAmount}
                             </Typography>
                           </CardContent>
-                          <CardActions>
+                          <CardActions className="d-flex align-items-center justify-content-end">
                             <Typography
                               variant="subtitle2"
                               color="error"
                               component="div"
-                              className="d-flex align-items-center justify-content-end"
+                              
                             >
                               Cancelled
                             </Typography>
