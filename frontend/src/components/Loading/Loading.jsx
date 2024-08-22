@@ -1,5 +1,5 @@
 import React from 'react'
-import CarLoader from '../../assets/all-images/cars-img/9e9c68435731c23c00573a1544d539b3.gif'
+import CarLoader from '../../assets/all-images/cars-img/Loading.gif'
 import './Loading.css'
 
 function Loading() {
